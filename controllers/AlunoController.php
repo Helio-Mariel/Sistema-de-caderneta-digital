@@ -26,7 +26,6 @@ class AlunoController extends RenderViews
     }
 
 
-
     public function logout()
     {
         $this->alunoDAO->logout();
