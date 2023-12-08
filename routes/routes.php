@@ -18,10 +18,8 @@ $routes = [
     // ---------------------- Professor -------------------------------
     '/login_admin' => 'AdministradorController@login',
     '/admin_home' => 'AdministradorController@admin',
+    '/admin_disciplinas' => 'AdministradorController@disciplinas',
     '/logout_admin' => 'AdministradorController@logout',
-
-
-
 
     // ---------------------- Admin -----------------------------------
 

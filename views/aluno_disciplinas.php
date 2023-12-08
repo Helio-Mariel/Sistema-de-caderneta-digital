@@ -21,36 +21,18 @@ require_once('layout/layout_aluno.php');
                     </tr>
                 </thead>
                 <tbody>
+
+                    <?php
+                
+                    foreach ($disciplinas as $disciplina) :
+                    ?>
                     <tr role="row" class="odd">
-                        <td class="sorting_1"> 1 </td>
-                        <td> 1 </td>
-
+                        <td class="sorting_1"> <?php echo $disciplina['prof_nome'] ?></td>
+                        <td> <?php echo $disciplina['disciplina_nome'] ?> </td>
                     </tr>
-                    <tr role="row" class="even">
-                        <td class="sorting_1"> 1 </td>
-                        <td> 1 </td>
-
-                    </tr>
-                    <tr role="row" class="odd">
-                        <td class="sorting_1"> 1 </td>
-                        <td> 1 </td>
-
-                    </tr>
-                    <tr role="row" class="even">
-                        <td class="sorting_1"> 1 </td>
-                        <td> 1 </td>
-
-                    </tr>
-                    <tr role="row" class="odd">
-                        <td class="sorting_1"> 1 </td>
-                        <td> 1 </td>
-
-                    </tr>
-                    <tr role="row" class="even">
-                        <td class="sorting_1"> 1 </td>
-                        <td> 1 </td>
-
-                    </tr>
+                    <?php
+                    endforeach;
+                    ?>
                 </tbody>
                 <tfoot>
                 </tfoot>

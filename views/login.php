@@ -1,9 +1,8 @@
-<link rel="stylesheet" href="views\Support\css\styles_login.css ">
-
 <html>
 
 <head>
-    <link rel="stylesheet" href="views\Support\css\styles.css">
+    <link rel="stylesheet" href="views\Support\css\styles_home.css">
+    <link rel="stylesheet" href="views\Support\css\styles_login.css">
 </head>
 
 <body data-new-gr-c-s-check-loaded="14.1137.0" data-gr-ext-installed="">

@@ -8,7 +8,7 @@ require_once('layout/layout_aluno.php');
             <h1 class="mt-4 mr-4">Página do Estudante</h1>
             <ol class="breadcrumb mb-6">
             </ol>
-            <table width="100px" class="table table-bordered" cellspacing="">
+            <table width="100px" class="table table-bordered table table-hover" cellspacing="">
                 <thead>
                 </thead>
                 <tbody id="table">

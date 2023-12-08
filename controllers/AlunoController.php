@@ -22,9 +22,8 @@ class AlunoController extends RenderViews
 
     public function disciplinas()
     {
-        $this->loadView('aluno_disciplinas', []);
+        $this->loadView('aluno_disciplinas', ['disciplinas' => $this->alunoDAO->disciplinasById()]);
     }
-
 
     public function logout()
     {

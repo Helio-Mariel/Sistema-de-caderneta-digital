@@ -13,25 +13,35 @@ require_once('layout/layout_prof.php');
                 </thead>
                 <tbody id="table">
                     <tr>
+                        <td style="width:170px; background-color: #005384 ; color: white">Nº do prof</td>
+                        <td style="height: 10px;" ;><?php echo $professor['id_professor']    ?></td>
+                    </tr>
+                    <tr>
                         <td style="width:170px; background-color: #005384 ; color: white">Nome</td>
-                        <td style="height: 10px;" ;><?php var_dump($professor) // echo $professor['prof_nome']  
+                        <td style="height: 10px;" ;><?php echo $professor['prof_nome']
                                                     ?></td>
                     </tr>
                     <tr>
-                        <td style="width:170px; background-color: #005384 ; color: white">Nº do prof</td>
-                        <td style="height: 10px;" ;><?php echo $professor['id_prof_']    ?></td>
-                    </tr>
-                    <tr>
                         <td style="width:170px; background-color: #005384 ; color: white">Classes</td>
-                        <td style="height: 10px;" ;><?php echo $professor['classe_nome']  ?></td>
+                        <td style="height: 10px;" ;><?php foreach ($disciplinas as $disciplina) :
+                                                        echo  "" . $disciplina['classe_nome'] . ",";
+                                                    endforeach;
+                                                    ?>.</td>
                     </tr>
                     <tr>
                         <td style="width:170px; background-color: #005384 ; color: white">Cursos</td>
-                        <td style="height: 10px;" ;><?php echo $professor['curso_nome']  ?></td>
+                        <td style="height: 10px;" ;><?php foreach ($disciplinas as $disciplina) :
+                                                        echo "" . $disciplina['curso_nome'] . ", ";
+
+                                                    endforeach;
+                                                    ?>.</td>
                     </tr>
                     <tr>
                         <td style="width:170px; background-color: #005384 ; color: white">Turma</td>
-                        <td style="height: 10px;" ;><?php echo $professor['turma_nome'] ?></td>
+                        <td style="height: 10px;" ;><?php foreach ($disciplinas as $disciplina) :
+                                                        echo  "" . $disciplina['turma_nome'] . ", ";
+                                                    endforeach;
+                                                    ?>.</td>
                     </tr>
 
 

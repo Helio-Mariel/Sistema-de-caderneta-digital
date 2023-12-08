@@ -1,5 +1,5 @@
 <?php
-require_once('layout/layout_admin.php');
+require_once('views\layout\layout_admin.php');
 ?>
 
 <!-- <div id="layoutSidenav_content">

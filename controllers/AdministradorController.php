@@ -11,16 +11,16 @@ class AdministradorController extends RenderViews
 
     public function admin()
     {
-        $this->loadView('admin_home', []);
+        $this->loadView('views_admin/admin_home', []);
     }
 
-    public function login()
+    /*   public function login()
     {
         $username = $_POST['username'];
         $password = $_POST['password'];
 
         $this->administradorDAO->login_admin($username, $password);
-    }
+    }   */
 
     public function logout()
     {
