@@ -14,28 +14,24 @@ require_once('layout/layout_prof.php');
                 <tbody id="table">
                     <tr>
                         <td style="width:170px; background-color: #005384 ; color: white">Nome</td>
-                        <td style="height: 10px;" ;><?php // echo $prof[''] 
+                        <td style="height: 10px;" ;><?php var_dump($professor) // echo $professor['prof_nome']  
                                                     ?></td>
                     </tr>
                     <tr>
                         <td style="width:170px; background-color: #005384 ; color: white">Nº do prof</td>
-                        <td style="height: 10px;" ;><?php // echo $prof[''] 
-                                                    ?></td>
+                        <td style="height: 10px;" ;><?php echo $professor['id_prof_']    ?></td>
                     </tr>
                     <tr>
                         <td style="width:170px; background-color: #005384 ; color: white">Classes</td>
-                        <td style="height: 10px;" ;><?php // echo $prof[''] 
-                                                    ?></td>
+                        <td style="height: 10px;" ;><?php echo $professor['classe_nome']  ?></td>
                     </tr>
                     <tr>
                         <td style="width:170px; background-color: #005384 ; color: white">Cursos</td>
-                        <td style="height: 10px;" ;><?php // echo $prof[''] 
-                                                    ?></td>
+                        <td style="height: 10px;" ;><?php echo $professor['curso_nome']  ?></td>
                     </tr>
                     <tr>
                         <td style="width:170px; background-color: #005384 ; color: white">Turma</td>
-                        <td style="height: 10px;" ;><?php // echo $prof[''] 
-                                                    ?></td>
+                        <td style="height: 10px;" ;><?php echo $professor['turma_nome'] ?></td>
                     </tr>
 
 

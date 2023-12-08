@@ -8,15 +8,16 @@ class ProfessorController extends RenderViews
         $this->professorDAO = new ProfessorDAO();
     }
 
-    /*    public function professor1()
+    public function professor()
     {
         $this->loadView('prof_home', ['professor' => $this->professorDAO->fetchById()]);
-    }   */
+    }
 
-    public function professor()
+    /*    public function professor()
     {
         $this->loadView('prof_home', []);
     }
+*/
 
     public function login()
     {

@@ -47,20 +47,22 @@ class ProfessorDAO extends Database
         $stm->execute([$id]);
         return $stm->fetch(PDO::FETCH_ASSOC);
     }
-    public function fetchById() // perfil 
+    public function fetchById() // perfil  
     {
-        $id = $_SESSION['id_aluno'];
+        $id = $_SESSION['id_professor'];
         $user = $this->getProf();
 
-        $stm = $this->pdo->prepare("SELECT 
-aluno.id_aluno, aluno.nome as aluno_nome, aluno.tipo_aluno, curso.nome as curso_nome, 
-turma.nome as turma_nome, classe.numeracao as classe_numeracao from aluno 
-join curso  on curso.id_curso = :curso
-join turma  on turma.id_turma = :turma
-join classe on classe.id_classe = :classe
-where aluno.id_aluno = :id_aluno ;");
+        $stm = $this->pdo->prepare("SELECT prof_turma.id_prof_, professor.nome as prof_nome, turma.nome as turma_nome, 
+curso.nome as curso_nome, classe.numeracao as classe_nome
+from prof_turma
+join professor on professor.id_professor =  :id_professor
+join turma on  turma.id_turma = :turma
+join curso on curso.id_curso =  :curso
+join classe on classe.id_classe =  :classe
+where professor.id_professor =  :id_professor    ");
 
-        $stm->bindParam(':id_aluno', $user['id_aluno']);
+
+        $stm->bindParam(':id_professor', $user['id_professor']);
         $stm->bindParam(':turma', $user['id_turma']);
         $stm->bindParam(':curso', $user['id_curso']);
         $stm->bindParam(':classe', $user['id_classe']);
@@ -74,3 +76,5 @@ where aluno.id_aluno = :id_aluno ;");
         header("Location: /app/");
     }
 }
+
+// teste
