@@ -1,5 +1,5 @@
 <?php
-require_once('layout/layout_prof.php');
+require_once('views\layout\layout_prof.php');
 ?>
 
 <div id="layoutSidenav_content">

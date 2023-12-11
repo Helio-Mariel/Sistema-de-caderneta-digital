@@ -1,5 +1,5 @@
 <?php
-require_once('layout/layout_aluno.php');
+require_once('views\layout\layout_aluno.php');
 ?>
 
 <div id="layoutSidenav_content">

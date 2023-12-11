@@ -11,7 +11,7 @@ class AdministradorController extends RenderViews
 
     public function admin()
     {
-        $this->loadView('views_admin/admin_home', []);
+        $this->loadView('admin/admin_home', []);
     }
 
     /*   public function login()

@@ -35,7 +35,7 @@ class ProfessorDAO extends Database
             $_SESSION['id_professor'] = $prof['id_professor'];
             header("Location: /app/prof_home");
         } else {
-            header("Location: /app/login2");
+            header("Location: /app/login_prof");
             return false;
         }
     }
@@ -70,7 +70,7 @@ where professor.id_professor = $id ");
 
         $stm = $this->pdo->prepare("SELECT 
 prof_turma.id_professor , disciplina.nome as disciplina_nome , turma.nome as turma_nome, 
-curso.nome as curso_nome, classe.numeracao as classe_nome 
+curso.nome as curso_nome, classe.numeracao as classe_nome, prof_turma.dia
 from prof_turma 
 join disciplina on prof_turma.id_disciplina = disciplina.id_disciplina
 join professor on prof_turma.id_professor = professor.id_professor 

@@ -28,7 +28,4 @@ $routes = [
     // ------------------ Teste da Bd  ------------------------
     '/home_test' => 'HomeController@index_db',
 
-    //    '/page' => 'HomeController@index',
-    //    '/aluno/{id}' => 'AlunoController@show',
-
 ];
