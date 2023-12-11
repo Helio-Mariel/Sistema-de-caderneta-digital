@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Dashboard - SB Admin</title>
+    <title>Página Administrador</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="views\Support\css\styles_aluno.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -52,12 +52,12 @@
                             Página Inicial
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <a class="nav-link collapsed" href="admin_profs">
+                        <a class="nav-link collapsed" href="cursos_">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Listar Professores
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <a class="nav-link collapsed" href="admin_alunos">
+                        <a class="nav-link collapsed" href="cursos">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Listar Alunos
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
