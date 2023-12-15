@@ -1,6 +1,8 @@
 <?php
+
 class ProfessorController extends RenderViews
 {
+
     private $professorDAO;
 
     public function __construct()
@@ -11,15 +13,23 @@ class ProfessorController extends RenderViews
 
     public function login()
     {
-        $email = $_POST['email'];
+        $username = $_POST['username'];
         $password = $_POST['password'];
 
-        $this->professorDAO->login_prof($email, $password);
+        $this->professorDAO->login_prof($username, $password);
     }
 
     public function professor()
     {
-        $this->loadView('prof/prof_home', ['professor' => $this->professorDAO->fetchById(), 'disciplinas' => $this->professorDAO->disciplinasById1()]);
+        $this->loadView('prof/prof_home', [
+            'professor' => $this->professorDAO->fetchById(),
+            'disciplinas' => $this->professorDAO->disciplinasById(),
+            'classes' => $this->professorDAO->listar_Classes(),
+            'turmas' => $this->professorDAO->listar_Turmas(),
+            'cursos' => $this->professorDAO->listar_Cursos()
+
+
+        ]);
     }
 
     public function disciplinas()

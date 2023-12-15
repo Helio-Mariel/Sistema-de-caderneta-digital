@@ -12,13 +12,15 @@ require_once('views\layout\layout_aluno.php');
                 <thead>
                 </thead>
                 <tbody id="table">
+
+                    <tr>
+                        <th style="width:170px; background-color: #005384 ; color: white">Nº de Matrícula
+                        </th>
+                        <td style="height: 10px;" ;><?php echo $aluno['n_matricula'] ?></td>
+                    </tr>
                     <tr>
                         <th style="width:170px; background-color: #005384 ; color: white">Nome</th>
                         <td style="height: 10px;" ;><?php echo $aluno['aluno_nome'] ?></td>
-                    </tr>
-                    <tr>
-                        <th style="width:170px; background-color: #005384 ; color: white">Nº do Aluno</th>
-                        <td style="height: 10px;" ;><?php echo $aluno['id_aluno'] ?></td>
                     </tr>
                     <tr>
                         <th style="width:170px; background-color: #005384 ; color: white">Curso</th>

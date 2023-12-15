@@ -15,17 +15,7 @@ class AdministradorController extends RenderViews
         $this->loadView('admin/admin_home', []);
     }
 
-    public function logout()
-    {
-        $this->administradorDAO->logout();
-    }
     // ----------------------------------------------------------------------------
-    public function profs()
-    {
-        $this->loadView('admin/admin_profs', []);
-    }
-
-    // ------------------------------------- Prof ---------------------------------------
 
     public function cursos_Alunos()
     {
@@ -57,8 +47,42 @@ class AdministradorController extends RenderViews
 
         $this->loadView('admin/admin_alunos', ['alunos' => $this->administradorDAO->getAlunos($id)]);
     }
+
+    public function editar()
+    {
+        $id = $_POST['id_aluno'];
+
+        $this->loadView('admin/editar_alunos', []);
+        // ['alunos' => $this->administradorDAO->editarAlunos()]);
+    }
+
+    public function criar()
+    {
+
+        $this->loadView('admin/criar_alunos', []);
+        // ['alunos' => $this->administradorDAO->editarAlunos()]);
+    }
+
+    public function apagar()
+    {
+        $id = $_GET['id_aluno'];
+        $id_ = $_GET['id_turma'];
+
+        $this->administradorDAO->delete($id, $id_);
+    }
     // ------------------------------------- Aluno ---------------------------------------
 
+    public function profs()
+    {
+        $this->loadView('admin/admin_profs', []);
+    }
+
+    // ------------------------------------- Prof ---------------------------------------
+
+    public function logout()
+    {
+        $this->administradorDAO->logout();
+    }
     /*   public function login()
     {
         $username = $_POST['username'];

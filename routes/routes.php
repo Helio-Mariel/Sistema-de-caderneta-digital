@@ -28,6 +28,11 @@ $routes = [
     '/turmas' => 'AdministradorController@turmas_Alunos',
     '/classes' => 'AdministradorController@classes_Alunos',
     '/admin_alunos' => 'AdministradorController@alunos',
+    '/criar_alunos' => 'AdministradorController@criar',
+    '/editar_alunos' => 'AdministradorController@editar',
+    '/apagar_alunos' => 'AdministradorController@apagar',
+
+
     // ---------------------- Admin-Alunos -----------------------------------
 
     '/cursos_' => 'AdministradorController@cursos_Profs',

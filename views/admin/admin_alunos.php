@@ -8,8 +8,7 @@ require_once('views\layout\layout_admin.php');
             <h1 class="mt-4 mr-4">Listagem dos Estudantes</h1>
             <ol class="breadcrumb mb-6">
             </ol>
-            <table id="" class="table table-striped table-bordered dataTable no-footer" cellspacing="0"
-                style="width: 1110px;">
+            <table id="" class="table table-striped table-bordered dataTable no-footer" cellspacing="0" style="width: 1110px;">
                 <thead>
                     <tr role="row">
                         <th style="background-color: rgb(0, 83, 132); color: white; width: 180px;">ID Aluno</th>
@@ -19,25 +18,34 @@ require_once('views\layout\layout_admin.php');
                         <th style="background-color: rgb(0, 83, 132); color: white; width: 180px;">Curso</th>
                         <th style="background-color: rgb(0, 83, 132); color: white; width: 180px;">Turma</th>
                         <th style="background-color: rgb(0, 83, 132); color: white; width: 180px;">Tipo Aluno</th>
-                        <th style="background-color: rgb(0, 83, 132); color: white; width: 180px;">Editar/Apagar</th>
+                        <th style="background-color: rgb(0, 83, 132); color: white; width: 180px;">Editar</th>
+                        <th style="background-color: rgb(0, 83, 132); color: white; width: 180px;">Apagar</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     foreach ($alunos as $aluno) :
                     ?>
-                    <tr role="row" class="odd">
-                        <td class="sorting_1"><?php echo $aluno['id_aluno'] ?></td>
-                        <td class="sorting_1"><?php echo $aluno['aluno_nome'] ?></td>
-                        <td class="sorting_1"><?php echo $aluno['username'] ?></td>
-                        <td class="sorting_1"><?php echo $aluno['numeracao'] ?></td>
-                        <td class="sorting_1"><?php echo $aluno['curso_nome'] ?></td>
-                        <td class="sorting_1"><?php echo $aluno['turma_nome'] ?></td>
-                        <td class="sorting_1"><?php echo $aluno['tipo_aluno'] ?></td>
-                        <td class="sorting_1"> </td>
+                        <tr role="row" class="odd">
+                            <td class="sorting_1"><?php echo $aluno['id_aluno'] ?></td>
+                            <td class="sorting_1"><?php echo $aluno['aluno_nome'] ?></td>
+                            <td class="sorting_1"><?php echo $aluno['username'] ?></td>
+                            <td class="sorting_1"><?php echo $aluno['numeracao'] ?></td>
+                            <td class="sorting_1"><?php echo $aluno['curso_nome'] ?></td>
+                            <td class="sorting_1"><?php echo $aluno['turma_nome'] ?></td>
+                            <td class="sorting_1"><?php echo $aluno['tipo_aluno'] ?></td>
+                            <td class="sorting_1">
+                                <a role="button" class="btn btn-primary" href="alunos_editar?id_aluno=<?php echo $aluno['id_aluno'] ?>">
+                                    Editar</a>
+                            </td>
+                            <td class="sorting_1">
+                                <a role="button" class="btn btn-primary" href="apagar_alunos?id_aluno=<?php echo $aluno['id_aluno'] ?>&id_turma=<?php echo $_GET['id_turma'] ?>">
+                                    Apagar</a>
+                            </td>
 
 
-                    </tr>
+
+                        </tr>
                     <?php
                     endforeach;
                     ?>

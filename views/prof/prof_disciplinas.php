@@ -43,9 +43,8 @@ require_once('views\layout\layout_prof.php');
                                                     ?></td>
                         <td class="sorting_1"> <?php echo $disciplina['dia']
                                                     ?></td>
-
-
                     </tr>
+
                     <?php
                     endforeach;
                     ?>

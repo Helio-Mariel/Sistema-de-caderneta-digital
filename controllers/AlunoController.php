@@ -11,10 +11,10 @@ class AlunoController extends RenderViews
 
     public function login()
     {
-        $username = $_POST['username'];
+        $n_matricula = $_POST['n_matricula'];
         $password = $_POST['password'];
 
-        $this->alunoDAO->login($username, $password);
+        $this->alunoDAO->login($n_matricula, $password);
     }
 
     public function aluno()
