@@ -56,7 +56,9 @@ class AdministradorDAO extends Database
     {
 
         $stm = $this->pdo->prepare("SELECT aluno.id_aluno, aluno.nome as aluno_nome, aluno.username, classe.numeracao,
-        turma.nome as turma_nome,  curso.nome as curso_nome, aluno.tipo_aluno from aluno
+        turma.nome as turma_nome,  curso.nome as curso_nome, aluno.tipo_aluno, 
+        curso.id_curso as curso_id, turma.id_turma as turma_id, classe.id_classe as classe_id
+        from aluno
         join turma on aluno.id_turma = turma.id_turma
         join classe on aluno.id_classe = classe.id_classe
         join curso on aluno.id_curso = curso.id_curso
@@ -65,17 +67,25 @@ class AdministradorDAO extends Database
         return $stm->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function editarAlunos(AlunoDTO $task)
+    public function create($nome, $password, $matricula, $tipo, $curso, $classe, $turma)
     {
-        /*    $stm = $this->pdo->prepare("UPDATE tasks SET name = :name, data = :data, important = :important, completed = NULL WHERE id = :id ");
-        $stm->bindParam(':name', $task->name);
-        $stm->bindParam(':id', $task->task_id);
-        $stm->bindParam(':important', $task->task_check);
-        $stm->bindParam(':data', $task->task_date);
+        $stm = $this->pdo->prepare("INSERT INTO aluno 
+        (nome, password, n_matricula, tipo_aluno, id_curso, id_classe, id_turma) 
+        VALUES (:nome, :password, :n_matricula, :tipo_aluno, :id_curso, :id_classe, :id_turma)
+        ");
+        $stm->bindParam(':nome', $nome);
+        $stm->bindParam(':password', $password);
+        $stm->bindParam(':n_matricula', $matricula);
+        $stm->bindParam(':tipo_aluno', $tipo);
+        $stm->bindParam(':id_curso', $curso);
+        $stm->bindParam(':id_classe', $classe);
+        $stm->bindParam(':id_turma', $turma);
         $stm->execute();
-
-        */
+        //    return $stm->fetch(PDO::FETCH_ASSOC);
+        //    header("Location: /app/admin_alunos?id_turma=$turma");
+        echo "<script>alert('Estudante criado com Sucesso!');location.href=' /app/admin_alunos?id_turma=$turma';</script>";
     }
+
 
     public function delete($id_aluno, $id_turma)
     {

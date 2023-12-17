@@ -42,10 +42,12 @@ class AdministradorController extends RenderViews
 
     public function alunos()
     {
-        $id = $_GET['id_turma'];
+        $id3 = $_GET['id_turma'];
         $id_ = $_GET['id_aluno'];
 
-        $this->loadView('admin/admin_alunos', ['alunos' => $this->administradorDAO->getAlunos($id)]);
+        $this->loadView('admin/admin_alunos', [
+            'alunos' => $this->administradorDAO->getAlunos($id3)
+        ]);
     }
 
     public function editar()
@@ -60,7 +62,28 @@ class AdministradorController extends RenderViews
     {
 
         $this->loadView('admin/criar_alunos', []);
-        // ['alunos' => $this->administradorDAO->editarAlunos()]);
+    }
+
+    public function criar_Alunos()
+    {
+        $nome   = $_POST['nome'];
+        $password   = $_POST['password'];
+        $matricula    = $_POST['n_matricula'];
+        $tipo    = $_POST['tipo_aluno'];
+        $curso   = $_POST['id_curso'];
+        $classe    = $_POST['id_classe'];
+        $turma    = $_POST['id_turma'];
+
+
+        $this->loadView('admin/criar_alunos', ['alunos' => $this->administradorDAO->create(
+            $nome,
+            $password,
+            $matricula,
+            $tipo,
+            $curso,
+            $classe,
+            $turma
+        )]);
     }
 
     public function apagar()
