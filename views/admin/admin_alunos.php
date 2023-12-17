@@ -11,11 +11,11 @@ require_once('views\layout\layout_admin.php');
             <?php
             foreach ($alunos as $aluno) :
             ?>
-            <a role="button" class="btn btn-success" href="criar_?id_classe=<?php echo $aluno['classe_id'] ?>&id_turma=<?php echo $aluno['turma_id'] 
-                ?>&id_curso=<?php echo $aluno['curso_id']?>">
-                Criar</a>
+            <a role="button" class="btn btn-primary"
+                href="criar_?id_classe=<?php echo $aluno['classe_id'] ?>&id_turma=<?php echo $aluno['turma_id'] ?>&id_curso=<?php echo $aluno['curso_id'] ?>">
+                Criar novo aluno</a>
             <?php
-            break; 
+                break;
             endforeach;
             ?>
             <table id="" class="table table-striped table-bordered dataTable no-footer" cellspacing="0"
@@ -47,7 +47,7 @@ require_once('views\layout\layout_admin.php');
                         <td class="sorting_1"><?php echo $aluno['tipo_aluno'] ?></td>
                         <td class="sorting_1">
                             <a role="button" class="btn btn-outline-primary"
-                                href="alunos_editar?id_aluno=<?php echo $aluno['id_aluno'] ?>">
+                                href="editar_?id_aluno=<?php echo $aluno['id_aluno'] ?>&id_turma=<?php echo $aluno['turma_id'] ?>&id_curso=<?php echo $aluno['curso_id'] ?>&id_classe=<?php echo $aluno['classe_id'] ?>">
                                 Editar</a>
                         </td>
                         <td class="sorting_1">
