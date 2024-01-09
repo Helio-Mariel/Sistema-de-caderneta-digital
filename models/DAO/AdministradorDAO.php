@@ -101,23 +101,41 @@ class AdministradorDAO extends Database
         return $stm->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function edit($nome, $password, $tipo, $id, $turma) // $curso, $classe, $turma
+    public function edit($nome, $password, $tipo, $id, $turma, $curso, $classe) // $curso, $classe, $turma
     {
+        $turmas = $this->getTurma($turma);
+        $id_turma = $turmas['id_turma'];
         $stm = $this->pdo->prepare("UPDATE aluno 
-        SET nome = :nome, password = :password, tipo_aluno = :tipo_aluno WHERE (id_aluno = :id_aluno)
-                ");
+        SET nome = :nome, password = :password, tipo_aluno = :tipo_aluno, id_curso = :id_curso
+        , id_classe = :id_classe, id_turma = :id_turma WHERE (id_aluno = :id_aluno) ");
         $stm->bindParam(':nome', $nome);
         $stm->bindParam(':password', $password);
         $stm->bindParam(':tipo_aluno', $tipo);
         $stm->bindParam(':id_aluno', $id);
-        // $stm->bindParam(':id_classe', $classe);
-        // $stm->bindParam(':id_turma', $turma);   
+        $stm->bindParam(':id_classe', $classe);
+        $stm->bindParam(':id_curso', $curso);
+        $stm->bindParam(':id_turma', $id_turma);
         $stm->execute();
+        //  echo var_dump($turmas);
+
         //    return $stm->fetch(PDO::FETCH_ASSOC);
         //    header("Location: /app/admin_alunos?id_turma=$turma");
-        echo "<script>alert('Estudante editado com Sucesso!');location.href=' /app/admin_alunos?id_turma=$turma';</script>";
+        echo "<script>alert('Estudante editado com Sucesso!');
+           location.href=' /app/admin_alunos?id_turma=$id_turma';</script>";
     }
 
+    public function getTurma($turma)
+    {
+
+        $stm = $this->pdo->prepare("SELECT * from turma where nome like '$turma%' "); //nome like '$turma%'from turma 
+        $stm->execute();
+        return $stm->fetch(PDO::FETCH_ASSOC);
+    }
+
+
+
+
+    // ----------------------------------------------------------------------------------------------------------------------
     public function delete($id_aluno, $id_turma)
     {
         $stm = $this->pdo->prepare("DELETE FROM aluno WHERE aluno.id_aluno = $id_aluno");

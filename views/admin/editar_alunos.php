@@ -29,13 +29,15 @@ require_once('views\layout\layout_admin.php');
                                 <div class="row mb-4">
                                     <div class="col-md-10 mb-4">
                                         <div class="form-floating mb-3 mb-md-0">
-                                            <input class="form-control" id="nome" type="text" name="nome" value="<?php echo $aluno['aluno_nome'];  ?> " />
+                                            <input class="form-control" id="nome" type="text" name="nome"
+                                                value="<?php echo $aluno['aluno_nome'];  ?> " />
                                             <label for="nome">Nome Completo</label>
                                         </div>
                                     </div>
                                     <div class="col-md-10">
                                         <div class="form-floating mb-3 mb-md-0">
-                                            <input class="form-control" id="tipo_aluno" type="text" name="tipo_aluno" value="<?php echo $aluno['tipo_aluno'] ?>" />
+                                            <input class="form-control" id="tipo_aluno" type="text" name="tipo_aluno"
+                                                value="<?php echo $aluno['tipo_aluno'] ?>" />
                                             <label for="tipo_aluno">Tipo de Aluno</label>
                                             <!--        <input class="form-control" id="n_matricula" type="password"
                                                 name="password" />
@@ -47,7 +49,8 @@ require_once('views\layout\layout_admin.php');
                                 <div class="row mb-4">
                                     <div class="col-md-10">
                                         <div class="form-floating mb-3 mb-md-0">
-                                            <input class="form-control" id="n_matricula" type="password" name="password" value="<?php echo $aluno['password'] ?>" />
+                                            <input class="form-control" id="n_matricula" type="password" name="password"
+                                                value="<?php echo $aluno['password'] ?>" />
                                             <label for="n_matricula">Password Nova (No caso do aluno esquecer)</label>
                                         </div>
                                     </div>
@@ -69,54 +72,16 @@ require_once('views\layout\layout_admin.php');
                                 <input type="hidden" name="id_turma" value="<?php echo $_GET['id_turma'] ?>" />
 
 
-                                <!--           <div class="row mb-4">
-                                    <div class="col-md-6">
-                                        <label for="inputState">Classe</label>
-                                        <select id="inputState" class="form-control">
-                                            <option selected>Escolha...</option>
-                                            <option value="1">10ª Classe</option>
-                                            <option value="2">11ª Classe</option>
-                                            <option value="3">12ª Classe</option>
-                                            <option>...</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="inputState">Curso</label>
-                                        <select id="inputState" class="form-control">
-                                            <option selected>Escolha...</option>
-                                            <option value="1">Ciências Físicas e Biólogicas </option>
-                                            <option value="2">Engenhearia Informática</option>
-                                            <option value="3">Construção Cívil</option>
-                                            <option value="4">Ciências Económicas e Juridícas</option>
-
-                                            <option>...</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="row mb-4">
-                                    <div class="col-md-6">
-                                        <label for="inputState">Turma</label>
-                                        <select id="inputState" class="form-control">
-                                            <option selected>Escolha...</option>
-                                            <option value="1">A</option>
-                                            <option value="2">B</option>
-                                            <option value="3">C</option>
-                                            <option>...</option>
-                                        </select>
-                                    </div>
-                                </div>   
-
                                 <div class="row mb-3">
                                     <div class="col-md-6">
                                         <label for="select1">Curso : </label>
                                         <select class="form-control" id="select1" name="id_curso"
                                             onchange="atualizarSelect2()">
                                             <option selected>Escolha...</option>
-                                            <option value="I">Engenharia Informatica</option>
-                                            <option value="CFB">Ciencias Fisicas e Biologicas</option>
-                                            <option value="CC">Construção Civil</option>
-                                            <option value="CEJ">Ciencias Economicas e Juridicas</option>
+                                            <option value="2">Engenharia Informatica</option>
+                                            <option value="1">Ciências Fisicas e Biologicas</option>
+                                            <option value="3">Construção Civil</option>
+                                            <option value="4">Ciencias Economicas e Juridicas</option>
                                         </select>
                                     </div>
                                     <div class="col-md-6">
@@ -124,15 +89,14 @@ require_once('views\layout\layout_admin.php');
                                         <select class="form-control" id="select2" name="id_classe"
                                             onchange="atualizarSelect2()">
                                             <option selected>Escolha...</option>
-                                            <option value="1">10ª</option>
-                                            <option value="2">11ª</option>
-                                            <option value="3">12ª</option>
+                                            <option value="2">10ª</option>
+                                            <option value="3">11ª</option>
+                                            <option value="4">12ª</option>
                                         </select>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="select3">Turma : </label>
                                         <select class="form-control" id="select3" name="id_turma">
-
                                         </select>
                                     </div>
                                 </div>
@@ -153,29 +117,29 @@ require_once('views\layout\layout_admin.php');
                                     select3.innerHTML = "";
 
                                     // Adiciona novas opções com base na seleção do primeiro select
-                                    if (valorSelect1 === "I" && valorSelect2 === "1") {
+                                    if (valorSelect1 === "2" && valorSelect2 === "2") {
                                         var opcoes = ["I1_A", "I1_B", "I1_C"];
-                                    } else if (valorSelect1 === "I" && valorSelect2 === "2") {
+                                    } else if (valorSelect1 === "2" && valorSelect2 === "3") {
                                         var opcoes = ["I2_A", "I2_B", "I2_C"];
-                                    } else if (valorSelect1 === "I" && valorSelect2 === "3") {
+                                    } else if (valorSelect1 === "2" && valorSelect2 === "4") {
                                         var opcoes = ["I3_A", "I3_B", "I3_C"];
-                                    } else if (valorSelect1 === "CFB" && valorSelect2 === "1") {
+                                    } else if (valorSelect1 === "1" && valorSelect2 === "2") {
                                         var opcoes = ["CFB1_A", "CFB1_B", "CFB1_C"];
-                                    } else if (valorSelect1 === "CFB" && valorSelect2 === "2") {
+                                    } else if (valorSelect1 === "1" && valorSelect2 === "3") {
                                         var opcoes = ["CFB2_A", "CFB2_B", "CFB2_C"];
-                                    } else if (valorSelect1 === "CFB" && valorSelect2 === "3") {
+                                    } else if (valorSelect1 === "1" && valorSelect2 === "4") {
                                         var opcoes = ["CFB3_A", "CFB3_B", "CFB3_C"];
-                                    } else if (valorSelect1 === "CC" && valorSelect2 === "1") {
+                                    } else if (valorSelect1 === "3" && valorSelect2 === "2") {
                                         var opcoes = ["CC1_A", "CC1_B", "CC1_C"];
-                                    } else if (valorSelect1 === "CC" && valorSelect2 === "2") {
+                                    } else if (valorSelect1 === "3" && valorSelect2 === "3") {
                                         var opcoes = ["CC2_A", "CC2_B", "CC2_C"];
-                                    } else if (valorSelect1 === "CC" && valorSelect2 === "3") {
+                                    } else if (valorSelect1 === "3" && valorSelect2 === "4") {
                                         var opcoes = ["CC3_A", "CC3_B", "CC3_C"];
-                                    } else if (valorSelect1 === "CEJ" && valorSelect2 === "1") {
+                                    } else if (valorSelect1 === "4" && valorSelect2 === "2") {
                                         var opcoes = ["CEF1_A", "CEF1_B", "CEF1_C"];
-                                    } else if (valorSelect1 === "CEJ" && valorSelect2 === "2") {
+                                    } else if (valorSelect1 === "4" && valorSelect2 === "3") {
                                         var opcoes = ["CEF2_A", "CEF2_B", "CEF2_C"];
-                                    } else if (valorSelect1 === "CEJ" && valorSelect2 === "3") {
+                                    } else if (valorSelect1 === "4" && valorSelect2 === "4") {
                                         var opcoes = ["CEF3_A", "CEF3_B", "CEF3_C"];
                                     } else {
                                         var opcoes = ["Escolha..."];
@@ -191,8 +155,8 @@ require_once('views\layout\layout_admin.php');
                                 }
 
                                 // Chama a função inicialmente para configurar as opções do segundo select */
-                                atualizarSelect2(); 
-                                </script>   -->
+                                atualizarSelect2();
+                                </script>
 
                                 <div class="mt-4 mb-0">
                                     <div class="d-grid">

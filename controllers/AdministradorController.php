@@ -19,14 +19,14 @@ class AdministradorController extends RenderViews
 
     public function cursos_Alunos()
     {
-        $id = $_GET['id_curso'];
+        //    $id = $_GET['id_curso'];
         $this->loadView('admin/cursos_alunos', ['cursos' => $this->administradorDAO->getCursos()]);
     }
 
     public function classes_Alunos()
     {
         $id = $_GET['id_curso'];
-        $id_ = $_GET['id_classe'];
+        //    $id_ = $_GET['id_classe'];
 
         $this->loadView('admin/classes_alunos', ['classes' => $this->administradorDAO->getClasses($id)]);
     }
@@ -35,7 +35,7 @@ class AdministradorController extends RenderViews
     {
         $id = $_GET['id_curso'];
         $id_ = $_GET['id_classe'];
-        $id__ = $_GET['id_turma'];
+        //    $id__ = $_GET['id_turma'];
 
         $this->loadView('admin/turmas_alunos', ['turmas' => $this->administradorDAO->getTurmas($id, $id_)]);
     }
@@ -43,7 +43,7 @@ class AdministradorController extends RenderViews
     public function alunos()
     {
         $id = $_GET['id_turma'];
-        $id_ = $_GET['id_aluno'];
+        //    $id_ = $_GET['id_aluno'];
 
         $this->loadView('admin/admin_alunos', [
             'alunos' => $this->administradorDAO->getAlunos($id)
@@ -60,18 +60,23 @@ class AdministradorController extends RenderViews
 
     public function editar_Alunos()
     {
-        $id = $_POST['id_aluno'];
-        $id_ = $_POST['id_turma'];
         $nome   = $_POST['nome'];
         $password   = $_POST['password'];
         $tipo    = $_POST['tipo_aluno'];
+        $id = $_POST['id_aluno'];
+        $turma = $_POST['id_turma'];
+        $curso = $_POST['id_curso'];
+        $classe = $_POST['id_classe'];
+
 
         $this->administradorDAO->edit(
             $nome,
             $password,
             $tipo,
             $id,
-            $id_
+            $turma,
+            $curso,
+            $classe
         );
     }
 
