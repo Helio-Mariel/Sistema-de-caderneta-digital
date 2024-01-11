@@ -127,11 +127,30 @@ class AdministradorDAO extends Database
     public function getTurma($turma)
     {
 
-        $stm = $this->pdo->prepare("SELECT * from turma where nome like '$turma%' "); //nome like '$turma%'from turma 
+        $stm = $this->pdo->prepare("SELECT * from turma where nome like '$turma%' ");
         $stm->execute();
         return $stm->fetch(PDO::FETCH_ASSOC);
     }
+    // ---------------------------------------------------------------------------------------------------------------------
 
+    public function getProfessor($id_curso, $id_classe, $turma)
+    {
+
+        $turmas = $this->getTurma($turma);
+        $id_turma = $turmas['id_turma'];
+        $stm = $this->pdo->prepare("SELECT professor.id_professor, professor.nome as prof_nome, professor.email, curso.nome as curso_nome,
+classe.numeracao, turma.id_turma, turma.nome as turma_nome,
+disciplina.nome as disc_nome
+from prof_turma
+join professor on prof_turma.id_professor = professor.id_professor
+join turma on prof_turma.id_turma = turma.id_turma
+join disciplina on prof_turma.id_disciplina = disciplina.id_disciplina
+join curso on prof_turma.id_curso = curso.id_curso
+join classe on prof_turma.id_classe = classe.id_classe
+where curso.id_curso = $id_curso and classe.id_classe = $id_classe and turma.id_turma = $id_turma ");
+        $stm->execute();
+        return $stm->fetchAll(PDO::FETCH_ASSOC);
+    }
 
 
 

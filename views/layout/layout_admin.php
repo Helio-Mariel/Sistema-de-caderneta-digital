@@ -53,7 +53,7 @@
                             Página Inicial
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <a class="nav-link collapsed" href="cursos_">
+                        <a class="nav-link collapsed" href="turmas_profs">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Listar Professores
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>

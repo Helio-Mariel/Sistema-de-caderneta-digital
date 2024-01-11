@@ -119,7 +119,18 @@ class AdministradorController extends RenderViews
 
     public function profs()
     {
-        $this->loadView('admin/admin_profs', []);
+        $id = $_GET['id_curso'];
+        $id_ = $_GET['id_classe'];
+        $id__ = $_GET['id_turma'];
+        $this->loadView('admin/admin_profs', [
+            'profs' => $this->administradorDAO->getProfessor($id, $id_, $id__),
+            'turma' => $this->administradorDAO->getTurma($id__)
+        ]);
+    }
+
+    public function turmas_Profs()
+    {
+        $this->loadView('admin/turmas_profs', []);
     }
 
     // ------------------------------------- Prof ---------------------------------------

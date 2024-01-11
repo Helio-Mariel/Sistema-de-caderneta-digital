@@ -37,11 +37,14 @@ $routes = [
 
     // ---------------------- Admin-Alunos -----------------------------------
 
-    '/cursos_' => 'AdministradorController@cursos_Profs',
-    '/classes_' => 'AdministradorController@classes_Profs',
+    '/turmas_profs' => 'AdministradorController@turmas_Profs',
     '/admin_profs' => 'AdministradorController@profs',
+    '/criar__' => 'AdministradorController@criar',
+    '/criar_profs' => 'AdministradorController@criar_Profs',
+    '/editar__' => 'AdministradorController@editar',
+    '/editar_profs' => 'AdministradorController@editar_Profs',
+    '/apagar_profs' => 'AdministradorController@apagar',
     // ---------------------- Admin-Professor -----------------------------------
-
 
     // ------------------ Teste da Bd  ------------------------
     '/home_test' => 'HomeController@index_db',
