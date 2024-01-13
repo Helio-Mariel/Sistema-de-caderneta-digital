@@ -5,17 +5,9 @@ require_once('views\layout\layout_admin.php');
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4 mt-4">
-            <h1 class="mt-4 mr-4">Listagem de Professores</h1>
+            <h1 class="mt-4 mr-4">Listagem</h1>
             <ol class="breadcrumb mb-6">
             </ol>
-            <a role="button" class="btn btn-primary" href="criar__">
-                Criar Professor</a>
-            <?php /* criar__?id_classe=<?php echo $prof['classe_id'] ?>&id_turma=<?php echo $prof['turma_id'] ?>&id_curso=<?php echo $prof['curso_id'] ?>
-            */ ?>
-            <a role="button" class="btn btn-primary" href="listar_profs">
-                Listar Professores</a>
-            <?php /* criar__?id_classe=<?php echo $prof['classe_id'] ?>&id_turma=<?php echo $prof['turma_id'] ?>&id_curso=<?php echo $prof['curso_id'] ?>
-            */ ?>
             <table id="" class="table table-striped table-bordered dataTable no-footer" cellspacing="0"
                 style="width: 1110px;">
                 <thead>

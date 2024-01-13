@@ -146,37 +146,27 @@ class AdministradorDAO extends Database
 
         $turmas = $this->getTurma($turma);
         $id_turma = $turmas['id_turma'];
-        $stm = $this->pdo->prepare("SELECT professor.id_professor, professor.nome as prof_nome, 
-        professor.email, curso.nome as curso_nome, classe.numeracao, turma.nome as turma_nome, 
-        disciplina.nome as disc_nome,      
-        turma.id_turma, curso.id_curso, classe.id_classe
-        from prof_turma
-        join professor on prof_turma.id_professor = professor.id_professor
-        join turma on prof_turma.id_turma = turma.id_turma
-        join disciplina on prof_turma.id_disciplina = disciplina.id_disciplina
-        join curso on prof_turma.id_curso = curso.id_curso
-        join classe on prof_turma.id_classe = classe.id_classe
-        where curso.id_curso = $id_curso and classe.id_classe = $id_classe and turma.id_turma = $id_turma 
-        order by professor.id_professor");
+        $stm = $this->pdo->prepare("SELECT professor.id_professor, professor.nome as prof_nome, professor.email, curso.nome as curso_nome,
+classe.numeracao, turma.id_turma, turma.nome as turma_nome,
+disciplina.nome as disc_nome
+from prof_turma
+join professor on prof_turma.id_professor = professor.id_professor
+join turma on prof_turma.id_turma = turma.id_turma
+join disciplina on prof_turma.id_disciplina = disciplina.id_disciplina
+join curso on prof_turma.id_curso = curso.id_curso
+join classe on prof_turma.id_classe = classe.id_classe
+where curso.id_curso = $id_curso and classe.id_classe = $id_classe and turma.id_turma = $id_turma ");
         $stm->execute();
         return $stm->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function remove($id_professor, $turma, $id_curso, $id_classe)
-    {
-        $turmas = $this->getTurma($turma);
-        $id_turma = $turmas['id_turma'];
-        $stm = $this->pdo->prepare("DELETE FROM prof_turma WHERE prof_turma.id_professor = $id_professor");
-        $stm->execute();
-        header("Location: /app/admin_profs?id_curso=$id_curso&id_classe=$id_classe&id_turma=$id_turma");
-    }
 
     // ----------------------------------------------------------------------------------------------------------------------
     public function delete($id_aluno, $id_turma)
     {
         $stm = $this->pdo->prepare("DELETE FROM aluno WHERE aluno.id_aluno = $id_aluno");
         $stm->execute();
-        header("Location: /app/admin_alunos?id_turma=$id_turma&");
+        header("Location: /app/admin_alunos?id_turma=$id_turma");
     }
 
     public function logout()

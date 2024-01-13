@@ -5,13 +5,13 @@ $routes = [
     '/' => 'HomeController@home_page',
     '/login' => 'HomeController@login',
     '/login_professor' => 'HomeController@login2',
-    // ---------------------- Home -----------------------------------
+    // ---------------------- Home ----------------------------------------
 
     '/login_aluno' => 'AlunoController@login',
     '/aluno_home' => 'AlunoController@aluno',
     '/aluno_disciplinas' => 'AlunoController@disciplinas',
     '/logout' => 'AlunoController@logout',
-    // ---------------------- Aluno -----------------------------------
+    // ---------------------- Aluno ---------------------------------------
 
     '/login_prof' => 'ProfessorController@login',
     '/prof_home' => 'ProfessorController@professor',
@@ -22,7 +22,7 @@ $routes = [
     '/login_admin' => 'AdministradorController@login',
     '/admin_home' => 'AdministradorController@admin',
     '/logout_admin' => 'AdministradorController@logout',
-    // ---------------------- Admin -----------------------------------
+    // ---------------------- Admin --------------------------------------
 
     '/cursos' => 'AdministradorController@cursos_Alunos',
     '/turmas' => 'AdministradorController@turmas_Alunos',
@@ -34,18 +34,19 @@ $routes = [
     '/editar_alunos' => 'AdministradorController@editar_Alunos',
     '/apagar_alunos' => 'AdministradorController@apagar',
 
-
-    // ---------------------- Admin-Alunos -----------------------------------
+    // ---------------------- Admin-Alunos ---------------------------------
 
     '/turmas_profs' => 'AdministradorController@turmas_Profs',
+    '/listar_profs' => 'AdministradorController@listar',
     '/admin_profs' => 'AdministradorController@profs',
-    '/criar__' => 'AdministradorController@criar',
+    '/criar__' => 'AdministradorController@criar_',
     '/criar_profs' => 'AdministradorController@criar_Profs',
-    '/editar__' => 'AdministradorController@editar',
+    '/editar__' => 'AdministradorController@editar_',
     '/editar_profs' => 'AdministradorController@editar_Profs',
-    '/apagar_profs' => 'AdministradorController@apagar',
-    // ---------------------- Admin-Professor -----------------------------------
+    '/apagar_profs' => 'AdministradorController@apagar_',
+    '/remover_profs' => 'AdministradorController@remover',
 
+    // ---------------------- Admin-Professor -----------------------------------
     // ------------------ Teste da Bd  ------------------------
     '/home_test' => 'HomeController@index_db',
 
