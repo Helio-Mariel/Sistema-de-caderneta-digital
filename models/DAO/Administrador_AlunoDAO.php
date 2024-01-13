@@ -1,18 +1,16 @@
 <?php
 session_start();
 
-class AdministradorDAO extends Database
+class Administrador_AlunoDAO extends Database
 {
     private $pdo;
     //private $userId;
-
 
     public function __construct()
     {
         $this->pdo = $this->getConnection();
         //    $this->userId = $_SESSION['user_id'];
     }
-
 
     public function getAdmin()
     {
@@ -81,16 +79,6 @@ class AdministradorDAO extends Database
         $stm->bindParam(':id_classe', $classe);
         $stm->bindParam(':id_turma', $turma);
         $stm->execute();
-        $stm2 = $this->pdo->prepare("INSERT INTO aluno 
-        (nome, password, n_matricula, tipo_aluno, id_curso, id_classe, id_turma) 
-        VALUES (:nome, :password, :n_matricula, :tipo_aluno, :id_curso, :id_classe, :id_turma)
-        ");
-        $stm2->bindParam(':id_classe', $classe);
-        $stm2->bindParam(':id_turma', $turma);
-        $stm2->execute();
-
-        //    return $stm->fetch(PDO::FETCH_ASSOC);
-        //    header("Location: /app/admin_alunos?id_turma=$turma");
         echo "<script>alert('Estudante criado com Sucesso!');location.href=' /app/admin_alunos?id_turma=$turma';</script>";
     }
 
@@ -139,56 +127,14 @@ class AdministradorDAO extends Database
         $stm->execute();
         return $stm->fetch(PDO::FETCH_ASSOC);
     }
-    // ---------------------------------------------------------------------------------------------------------------------
 
-    public function getProfessor($id_curso, $id_classe, $turma)
-    {
-
-        $turmas = $this->getTurma($turma);
-        $id_turma = $turmas['id_turma'];
-        $stm = $this->pdo->prepare("SELECT professor.id_professor, professor.nome as prof_nome, professor.email, curso.nome as curso_nome,
-classe.numeracao, turma.id_turma, turma.nome as turma_nome,
-disciplina.nome as disc_nome
-from prof_turma
-join professor on prof_turma.id_professor = professor.id_professor
-join turma on prof_turma.id_turma = turma.id_turma
-join disciplina on prof_turma.id_disciplina = disciplina.id_disciplina
-join curso on prof_turma.id_curso = curso.id_curso
-join classe on prof_turma.id_classe = classe.id_classe
-where curso.id_curso = $id_curso and classe.id_classe = $id_classe and turma.id_turma = $id_turma ");
-        $stm->execute();
-        return $stm->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-
-    // ----------------------------------------------------------------------------------------------------------------------
     public function delete($id_aluno, $id_turma)
     {
         $stm = $this->pdo->prepare("DELETE FROM aluno WHERE aluno.id_aluno = $id_aluno");
         $stm->execute();
         header("Location: /app/admin_alunos?id_turma=$id_turma");
     }
+    // ---------------------------------------------------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------------------------------------------------
 
-    public function logout()
-    {
-        session_destroy();
-        header("Location: /app/");
-    }
-
-    public function login_admin($username, $password)
-    {
-        $stm = $this->pdo->prepare("SELECT * FROM administrador WHERE username = :username");
-        $stm->bindParam(":username", $username);
-        $stm->execute();
-
-        $admin = $stm->fetch(PDO::FETCH_ASSOC);
-
-        if ($admin && $password == $admin['password']) {
-            $_SESSION['id_admin'] = $admin['id_admin'];
-            header("Location: /app/admin_home");
-        } else {
-            header("Location: /app/login");
-            return false;
-        }
-    }
 }

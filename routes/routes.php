@@ -24,7 +24,17 @@ $routes = [
     '/logout_admin' => 'AdministradorController@logout',
     // ---------------------- Admin --------------------------------------
 
-    '/cursos' => 'AdministradorController@cursos_Alunos',
+    '/cursos' => 'Administrador_AlunoController@cursos_Alunos',
+    '/turmas' => 'Administrador_AlunoController@turmas_Alunos',
+    '/classes' => 'Administrador_AlunoController@classes_Alunos',
+    '/admin_alunos' => 'Administrador_AlunoController@alunos',
+    '/criar_' => 'Administrador_AlunoController@criar',
+    '/criar_alunos' => 'Administrador_AlunoController@criar_Alunos',
+    '/editar_' => 'Administrador_AlunoController@editar',
+    '/editar_alunos' => 'Administrador_AlunoController@editar_Alunos',
+    '/apagar_alunos' => 'Administrador_AlunoController@apagar',
+
+    /*    /cursos' => 'AdministradorController@cursos_Alunos',
     '/turmas' => 'AdministradorController@turmas_Alunos',
     '/classes' => 'AdministradorController@classes_Alunos',
     '/admin_alunos' => 'AdministradorController@alunos',
@@ -33,6 +43,7 @@ $routes = [
     '/editar_' => 'AdministradorController@editar',
     '/editar_alunos' => 'AdministradorController@editar_Alunos',
     '/apagar_alunos' => 'AdministradorController@apagar',
+*/
 
     // ---------------------- Admin-Alunos ---------------------------------
 
