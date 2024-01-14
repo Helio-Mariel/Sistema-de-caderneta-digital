@@ -79,7 +79,9 @@ class Administrador_AlunoDAO extends Database
         $stm->bindParam(':id_classe', $classe);
         $stm->bindParam(':id_turma', $turma);
         $stm->execute();
-        echo "<script>alert('Estudante criado com Sucesso!');location.href=' /app/admin_alunos?id_turma=$turma';</script>";
+        echo "<script>alert('Estudante criado com Sucesso!');
+        location.href=' /app/admin_alunos?id_turma=$turma';
+        </script>";
     }
 
     public function getEditar($id_aluno)

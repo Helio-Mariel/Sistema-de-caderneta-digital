@@ -54,7 +54,6 @@ class Administrador_AlunoController extends RenderViews
     {
         $id_ = $_GET['id_aluno'];
 
-
         $this->loadView('admin/editar_alunos', ['aluno' => $this->administrador_AlunoDAO->getEditar($id_)]);
     }
 
@@ -95,7 +94,6 @@ class Administrador_AlunoController extends RenderViews
         $curso   = $_POST['id_curso'];
         $classe    = $_POST['id_classe'];
         $turma    = $_POST['id_turma'];
-
 
         $this->loadView('admin/criar_alunos', ['alunos' => $this->administrador_AlunoDAO->create(
             $nome,

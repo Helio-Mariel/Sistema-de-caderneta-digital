@@ -6,76 +6,51 @@ class AdministradorDAO extends Database
     private $pdo;
     //private $userId;
 
-
     public function __construct()
     {
         $this->pdo = $this->getConnection();
         //    $this->userId = $_SESSION['user_id'];
     }
 
-    public function create($nome, $password, $matricula, $tipo, $curso, $classe, $turma)
+    public function create_($nome, $username, $email, $password)
     {
-        $stm = $this->pdo->prepare("INSERT INTO aluno 
-        (nome, password, n_matricula, tipo_aluno, id_curso, id_classe, id_turma) 
-        VALUES (:nome, :password, :n_matricula, :tipo_aluno, :id_curso, :id_classe, :id_turma)
+        $stm = $this->pdo->prepare("INSERT INTO professor (nome, username, email, password) 
+        VALUES (:nome, :username, :email, :password)
         ");
         $stm->bindParam(':nome', $nome);
+        $stm->bindParam(':username', $username);
+        $stm->bindParam(':email', $email);
         $stm->bindParam(':password', $password);
-        $stm->bindParam(':n_matricula', $matricula);
-        $stm->bindParam(':tipo_aluno', $tipo);
-        $stm->bindParam(':id_curso', $curso);
-        $stm->bindParam(':id_classe', $classe);
-        $stm->bindParam(':id_turma', $turma);
         $stm->execute();
-        $stm2 = $this->pdo->prepare("INSERT INTO aluno 
-        (nome, password, n_matricula, tipo_aluno, id_curso, id_classe, id_turma) 
-        VALUES (:nome, :password, :n_matricula, :tipo_aluno, :id_curso, :id_classe, :id_turma)
-        ");
-        $stm2->bindParam(':id_classe', $classe);
-        $stm2->bindParam(':id_turma', $turma);
-        $stm2->execute();
-
+        echo "<script>alert('Professor criado com Sucesso!');
+        location.href=' /app/listar_profs?';
+        </script>";
         //    return $stm->fetch(PDO::FETCH_ASSOC);
         //    header("Location: /app/admin_alunos?id_turma=$turma");
-        echo "<script>alert('Estudante criado com Sucesso!');location.href=' /app/admin_alunos?id_turma=$turma';</script>";
     }
 
-    public function getEditar($id_aluno)
+    public function getEditar($id_professor)
     {
 
-        $stm = $this->pdo->prepare("SELECT aluno.id_aluno as id_aluno, aluno.nome as aluno_nome, aluno.username, classe.numeracao,
-        aluno.password, turma.nome as turma_nome,  curso.nome as curso_nome, aluno.tipo_aluno, 
-        curso.id_curso as curso_id, turma.id_turma as turma_id, classe.id_classe as classe_id
-        from aluno
-        join turma on aluno.id_turma = turma.id_turma
-        join classe on aluno.id_classe = classe.id_classe
-        join curso on aluno.id_curso = curso.id_curso
-        where aluno.id_aluno = $id_aluno");
+        $stm = $this->pdo->prepare("SELECT * from professor where professor.id_professor = $id_professor");
         $stm->execute();
         return $stm->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function edit($nome, $password, $tipo, $id, $turma, $curso, $classe) // $curso, $classe, $turma
+    public function edit($nome, $username, $email, $password, $id) // $curso, $classe, $turma
     {
-        $turmas = $this->getTurma($turma);
-        $id_turma = $turmas['id_turma'];
-        $stm = $this->pdo->prepare("UPDATE aluno 
-        SET nome = :nome, password = :password, tipo_aluno = :tipo_aluno, id_curso = :id_curso
-        , id_classe = :id_classe, id_turma = :id_turma WHERE (id_aluno = :id_aluno) ");
+        $stm = $this->pdo->prepare("UPDATE professor 
+        SET nome = :nome, , username = :username, email = :email, password = :password
+        WHERE (id_aluno = :id_aluno) ");
         $stm->bindParam(':nome', $nome);
+        $stm->bindParam(':username', $username);
+        $stm->bindParam(':email', $email);
         $stm->bindParam(':password', $password);
-        $stm->bindParam(':tipo_aluno', $tipo);
-        $stm->bindParam(':id_aluno', $id);
-        $stm->bindParam(':id_classe', $classe);
-        $stm->bindParam(':id_curso', $curso);
-        $stm->bindParam(':id_turma', $id_turma);
+        $stm->bindParam(':id_professor', $id);
         $stm->execute();
-        //  echo var_dump($turmas);
 
-        //    return $stm->fetch(PDO::FETCH_ASSOC);
-        //    header("Location: /app/admin_alunos?id_turma=$turma");
-        echo "<script>alert('Estudante editado com Sucesso!');
-           location.href=' /app/admin_alunos?id_turma=$id_turma';</script>";
+        echo "<script>alert('Professor editado com Sucesso!');
+           location.href=' /app/listar_profs?</script>";
     }
 
     public function getTurma($turma)
@@ -108,6 +83,25 @@ class AdministradorDAO extends Database
         return $stm->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getAll()
+    {
+
+        $stm = $this->pdo->prepare("SELECT professor.id_professor, professor.nome as prof_nome, 
+        curso.nome as curso_nome, classe.numeracao, turma.nome as turma_nome, 
+        disciplina.nome as disc_nome,      
+        turma.id_turma, curso.id_curso, classe.id_classe
+        from prof_turma
+        join professor on prof_turma.id_professor = professor.id_professor
+        join turma on prof_turma.id_turma = turma.id_turma
+        join disciplina on prof_turma.id_disciplina = disciplina.id_disciplina
+        join curso on prof_turma.id_curso = curso.id_curso
+        join classe on prof_turma.id_classe = classe.id_classe
+        order by professor.id_professor");
+        $stm->execute();
+        return $stm->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
     public function remove($id_professor, $turma, $id_curso, $id_classe)
     {
         $turmas = $this->getTurma($turma);
@@ -118,12 +112,6 @@ class AdministradorDAO extends Database
     }
 
     // ----------------------------------------------------------------------------------------------------------------------
-    public function delete($id_aluno, $id_turma)
-    {
-        $stm = $this->pdo->prepare("DELETE FROM aluno WHERE aluno.id_aluno = $id_aluno");
-        $stm->execute();
-        header("Location: /app/admin_alunos?id_turma=$id_turma&");
-    }
 
     public function logout()
     {

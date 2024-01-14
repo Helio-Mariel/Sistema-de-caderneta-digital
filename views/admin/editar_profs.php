@@ -1,8 +1,6 @@
 <?php
 require_once('views\layout\layout_admin.php');
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +9,7 @@ require_once('views\layout\layout_admin.php');
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Formulário Estudante</h1>
+                    <h1 class="mt-4">Formulário Professor</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item active"></li>
                         </li>
@@ -19,52 +17,46 @@ require_once('views\layout\layout_admin.php');
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-table me-1"></i>
-                            Criar Estudante
+                            Editar Professor
                         </div>
-                        <!--    <div class="card-header">
-                            <h3 class="text-center font-weight-light my-3">Create Account</h3>
-                        </div>  -->
                         <div class="card-body">
-                            <form action="criar_alunos" method="POST">
+                            <form action="criar_profs" method="POST">
                                 <div class="row mb-4">
                                     <div class="col-md-6">
                                         <div class="form-floating mb-3 mb-md-0">
-                                            <input class="form-control" id="nome" type="text" name="nome" />
+                                            <input class="form-control" id="nome" type="text" name="nome"
+                                                value="<?php echo $prof['nome'] ?>" />
                                             <label for="nome">Nome Completo</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating mb-3 mb-md-0">
-                                            <input class="form-control" id="n_matricula" type="password" name="password" />
-                                            <label for="n_matricula">Password Padrão</label>
+                                            <input class="form-control" id="username" type="text" name="username"
+                                                value="<?php echo $prof['username'] ?>" />
+                                            <label for="username">Username</label>
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="row mb-4">
                                     <div class="col-md-6">
                                         <div class="form-floating mb-3 mb-md-0">
-                                            <input class="form-control" id="n_matricula" type="text" name="n_matricula" />
-                                            <label for="n_matricula">Número Matrícula</label>
+                                            <input class="form-control" id="email" type="email" name="email"
+                                                value="<?php echo $prof['email'] ?>" />
+                                            <label for="email">E-mail</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating mb-3 mb-md-0">
-                                            <input class="form-control" id="tipo_aluno" type="text" name="tipo_aluno" />
-                                            <label for="tipo_aluno">Tipo de Aluno</label>
+                                            <input class="form-control" id="password" type="password" name="password"
+                                                value="<?php echo $prof['password'] ?>" />
+                                            <label for="password">Password Padrão</label>
                                         </div>
                                     </div>
                                 </div>
 
-                                <input type="hidden" name="id_curso" value="<?php echo $_GET['id_curso'] ?>" />
-
-                                <input type="hidden" name="id_classe" value="<?php echo $_GET['id_classe'] ?>" />
-
-                                <input type="hidden" name="id_turma" value="<?php echo $_GET['id_turma'] ?>" />
-
                                 <div class="mt-4 mb-0">
                                     <div class="d-grid">
-                                        <button class="btn btn-primary" type="submit">Criar Aluno</button>
+                                        <button class="btn btn-primary" type="submit">Editar</button>
                                     </div>
                                 </div>
                             </form>
