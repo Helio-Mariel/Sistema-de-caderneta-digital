@@ -43,6 +43,8 @@ $routes = [
     '/criar_profs' => 'AdministradorController@criar_Profs',
     '/editar__' => 'AdministradorController@editar_',
     '/editar_profs' => 'AdministradorController@editar_Profs',
+    '/atribuir_' => 'AdministradorController@atribuir',
+    '/atribuir_profs' => 'AdministradorController@att_Profs',
     '/apagar_profs' => 'AdministradorController@apagar_',
     '/remover_profs' => 'AdministradorController@remover',
 

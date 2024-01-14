@@ -21,6 +21,24 @@ class AdministradorController extends RenderViews
         $this->loadView('admin/turmas_profs', []);
     }
 
+    public function profs() // Profs_turma
+    {
+
+        $id__ = $_GET['id_turma'];
+        $this->loadView('admin/admin_profs', [
+            'profs' => $this->administradorDAO->getProfessor($id__),
+            'turma' => $this->administradorDAO->getTurma($id__)
+        ]);
+    }
+
+    public function listar() // Todos os profs
+    {
+
+        $this->loadView('admin/listar_profs', [
+            'profs' => $this->administradorDAO->getAll(),
+        ]);
+    }
+
     public function criar_()
     {
         $this->loadView('admin/criar_profs', []);
@@ -42,29 +60,13 @@ class AdministradorController extends RenderViews
         )]);
     }
 
-    public function profs() // Profs_turma
-    {
-        $id = $_GET['id_curso'];
-        $id_ = $_GET['id_classe'];
-        $id__ = $_GET['id_turma'];
-        $this->loadView('admin/admin_profs', [
-            'profs' => $this->administradorDAO->getProfessor($id, $id_, $id__),
-            'turma' => $this->administradorDAO->getTurma($id__)
-        ]);
-    }
-
-    public function listar() // Todos os profs
-    {
-
-        $this->loadView('admin/listar_profs', [
-            'profs' => $this->administradorDAO->getAll(),
-        ]);
-    }
-
     public function editar_()
     {
         $id_ = $_GET['id_professor'];
-        $this->loadView('admin/editar_profs', ['prof' => $this->administradorDAO->getEditar($id_)]);
+        $this->loadView('admin/editar_profs', [
+            'prof' => $this->administradorDAO->getEditar($id_),
+            'disciplinas' => $this->administradorDAO->getDisciplina()
+        ]);
     }
 
     public function editar_Profs()
@@ -85,14 +87,25 @@ class AdministradorController extends RenderViews
         );
     }
 
+    public function atribuir()
+    {
+        $id_ = $_GET['id_professor'];
+        $this->loadView('admin/atribuir_profs', [
+            'prof' => $this->administradorDAO->getAtribuir($id_),
+            'disciplinas' => $this->administradorDAO->getDisciplina()
+        ]);
+    }
+
     public function remover()
     {
         $id = $_GET['id_professor'];
         $id_ = $_GET['id_turma'];
+        $disciplina = $_GET['id_disciplina'];
+
         $curso = $_GET['id_curso'];
         $classe = $_GET['id_classe'];
 
-        $this->administradorDAO->remove($id, $id_, $curso, $classe);
+        $this->administradorDAO->remove($id, $id_, $disciplina, $curso, $classe);
     }
 
     // ------------------------------------- Prof ---------------------------------------

@@ -20,7 +20,7 @@ require_once('views\layout\layout_admin.php');
                             Editar Professor
                         </div>
                         <div class="card-body">
-                            <form action="criar_profs" method="POST">
+                            <form action="editar_profs" method="POST">
                                 <div class="row mb-4">
                                     <div class="col-md-6">
                                         <div class="form-floating mb-3 mb-md-0">
@@ -53,7 +53,7 @@ require_once('views\layout\layout_admin.php');
                                         </div>
                                     </div>
                                 </div>
-
+                                <input type="hidden" name="id_professor" value="<?php echo $prof['id_professor'] ?>" />
                                 <div class="mt-4 mb-0">
                                     <div class="d-grid">
                                         <button class="btn btn-primary" type="submit">Editar</button>
