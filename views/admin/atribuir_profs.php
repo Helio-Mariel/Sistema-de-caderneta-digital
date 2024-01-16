@@ -19,20 +19,16 @@ require_once('views\layout\layout_admin.php');
                             <i class="fas fa-table me-1"></i>
                             Atribuir Professor em Turma
                         </div>
-                        <!--    <div class="card-header">
-                            <h3 class="text-center font-weight-light my-3">Create Account</h3>
-                        </div>  -->
                         <div class="card-body">
                             <form action="atribuir_profs" method="POST">
-                                <div class="row mb-4">
-                                    <div class="col-md-10 mb-4">
-                                        <div class="form-floating mb-3 mb-md-0">
-                                            <input readonly class="form-control" id="nome" type="text" name="nome"
+                                <div class="row mb-2">
+                                    <div class="col-md-8 mb-2">
+                                        <div class="form-floating mb-2 mb-md-0">
+                                            <input class="form-control" id="nome" type="text" name="nome"
                                                 value="<?php echo $prof['prof_nome']; ?>" readonly />
                                             <label for="nome">Nome Completo</label>
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-md-6">
@@ -57,7 +53,7 @@ require_once('views\layout\layout_admin.php');
                                         </select>
                                     </div>
                                 </div>
-                                <div class="row mb-3">
+                                <div class="row mb-6">
                                     <div class="col-md-6">
                                         <label for="select3">Turma : </label>
                                         <select class="form-control" id="select3" name="id_turma">
@@ -75,6 +71,7 @@ require_once('views\layout\layout_admin.php');
                                     </div>
                                 </div>
                         </div>
+                        </form>
                         <script>
                         function atualizarSelect2() {
                             // Obtém o valor selecionado no primeiro select
@@ -136,7 +133,6 @@ require_once('views\layout\layout_admin.php');
                                 <button class="btn btn-primary" type="submit">Editar Aluno</button>
                             </div>
                         </div>
-                        </form>
                     </div>
                 </div>
         </div>

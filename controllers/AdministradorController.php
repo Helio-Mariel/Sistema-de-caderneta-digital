@@ -87,6 +87,33 @@ class AdministradorController extends RenderViews
         );
     }
 
+    public function editar_d()
+    {
+        $id_ = $_GET['id_professor'];
+        $this->loadView('admin/editar_profs', [
+            'prof' => $this->administradorDAO->getEditar($id_),
+            'disciplinas' => $this->administradorDAO->getDisciplina()
+        ]);
+    }
+
+    public function editar_Disciplina()
+    {
+        $nome   = $_POST['nome'];
+        $username   = $_POST['username'];
+        $email    = $_POST['email'];
+        $password = $_POST['password'];
+        $id = $_POST['id_professor'];
+
+
+        $this->administradorDAO->edit(
+            $nome,
+            $username,
+            $email,
+            $password,
+            $id
+        );
+    }
+
     public function atribuir()
     {
         $id_ = $_GET['id_professor'];
@@ -101,11 +128,18 @@ class AdministradorController extends RenderViews
         $id = $_GET['id_professor'];
         $id_ = $_GET['id_turma'];
         $disciplina = $_GET['id_disciplina'];
-
         $curso = $_GET['id_curso'];
         $classe = $_GET['id_classe'];
 
         $this->administradorDAO->remove($id, $id_, $disciplina, $curso, $classe);
+    }
+
+    public function apagar_()
+    {
+        $id = $_GET['id_professor'];
+        $id_ = $_GET['id_turma'];
+
+        $this->administradorDAO->delete($id, $id_);
     }
 
     // ------------------------------------- Prof ---------------------------------------

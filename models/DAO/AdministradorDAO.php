@@ -61,6 +61,7 @@ class AdministradorDAO extends Database
 
     public function create_($nome, $username, $email, $password)
     {
+
         $stm = $this->pdo->prepare("INSERT INTO professor (nome, username, email, password) 
         VALUES (:nome, :username, :email, :password)
         ");
@@ -82,8 +83,9 @@ class AdministradorDAO extends Database
         return $stm->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function edit($nome, $username, $email, $password, $id) // $curso, $classe, $turma
+    public function edit($nome, $username, $email, $password, $id)
     {
+
         $stm = $this->pdo->prepare("UPDATE professor 
         SET nome = :nome, username = :username, email = :email, password = :password
         WHERE id_professor = :id_professor");
@@ -93,7 +95,6 @@ class AdministradorDAO extends Database
         $stm->bindParam(':password', $password);
         $stm->bindParam(':id_professor', $id);
         $stm->execute();
-
         echo "<script>alert('Professor editado com Sucesso!');
            location.href=' /app/listar_profs'
            </script>";
@@ -102,14 +103,10 @@ class AdministradorDAO extends Database
     public function getAtribuir($id_aluno)
     {
 
-        $stm = $this->pdo->prepare("SELECT aluno.id_aluno as id_aluno, aluno.nome as aluno_nome, aluno.username, classe.numeracao,
-        aluno.password, turma.nome as turma_nome,  curso.nome as curso_nome, aluno.tipo_aluno, 
-        curso.id_curso as curso_id, turma.id_turma as turma_id, classe.id_classe as classe_id
-        from aluno
-        join turma on aluno.id_turma = turma.id_turma
-        join classe on aluno.id_classe = classe.id_classe
-        join curso on aluno.id_curso = curso.id_curso
-        where aluno.id_aluno = $id_aluno");
+        $stm = $this->pdo->prepare("SELECT professor.id_professor, professor.nome as prof_nome
+from prof_turma
+join professor on prof_turma.id_professor = professor.id_professor
+where professor.id_professor = $id_aluno");
         $stm->execute();
         return $stm->fetch(PDO::FETCH_ASSOC);
     }
@@ -117,13 +114,14 @@ class AdministradorDAO extends Database
     public function getDisciplina()
     {
 
-        $stm = $this->pdo->prepare("SELECT * from disciplina ");
+        $stm = $this->pdo->prepare("SELECT * from disciplina");
         $stm->execute();
         return $stm->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function remove($id_professor, $turma, $disciplina, $id_curso, $id_classe)
     {
+
         $turmas = $this->getTurma($turma);
         $id_turma = $turmas['id_turma'];
         $stm = $this->pdo->prepare("DELETE FROM prof_turma WHERE prof_turma.id_professor = $id_professor and prof_turma.id_turma = $id_turma and prof_turma.id_disciplina = $disciplina");
@@ -131,16 +129,18 @@ class AdministradorDAO extends Database
         header("Location: /app/admin_profs?id_curso=$id_curso&id_classe=$id_classe&id_turma=$turma");
     }
 
-    public function removeP($id_professor, $turma, $disciplina, $id_curso, $id_classe)
+    public function delete($id_professor, $turma)
     {
-        $turmas = $this->getTurma($turma);
-        $id_turma = $turmas['id_turma'];
-        $stm = $this->pdo->prepare("DELETE FROM prof_turma WHERE prof_turma.id_professor = $id_professor and prof_turma.id_turma = $id_turma and prof_turma.id_disciplina = $disciplina");
+        $stm = $this->pdo->prepare("DELETE FROM prof_turma WHERE prof_turma.id_professor = $id_professor");
         $stm->execute();
-        header("Location: /app/admin_profs?id_curso=$id_curso&id_classe=$id_classe&id_turma=$turma");
+        $stm1 = $this->pdo->prepare("DELETE FROM professor WHERE id_professor = $id_professor ");
+        $stm1->execute();
+        echo "<script>alert('Professor Apagado com Sucesso!');
+           location.href=' /app/listar_profs'
+           </script>";
     }
 
-    // ----------------------------------------------------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------------------------------------------
 
     public function logout()
     {

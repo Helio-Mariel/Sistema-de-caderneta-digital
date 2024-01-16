@@ -29,10 +29,10 @@ require_once('views\layout\layout_admin.php');
                         <td class="sorting_1"><?php echo $prof['disc_nome'] ?></td>
 
                         <td class="sorting_1">
-                            <a role="button" class="btn btn-outline-primary" href="">
+                            <a role="button" class="btn btn-outline-primary"
+                                href="editar_d?id_professor=<?php echo $prof['id_professor'] ?>&id_turma=<?php echo $prof['id_turma'] ?>">
                                 Editar</a>
-                            <?php /* editar__?id_professor=<?php echo $prof['id_professor'] ?>&id_turma=<?php echo $prof['turma_id'] ?>&id_curso=<?php echo $prof['curso_id'] ?>&id_classe=<?php echo $prof['classe_id'] ?>
-                            */ ?>
+
                         </td>
                         <td class="sorting_1">
                             <a role="button" class="btn btn-outline-primary"
