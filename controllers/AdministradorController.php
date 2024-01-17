@@ -77,7 +77,6 @@ class AdministradorController extends RenderViews
         $password = $_POST['password'];
         $id = $_POST['id_professor'];
 
-
         $this->administradorDAO->edit(
             $nome,
             $username,
@@ -87,30 +86,26 @@ class AdministradorController extends RenderViews
         );
     }
 
-    public function editar_d()
+    public function editar_D()
     {
         $id_ = $_GET['id_professor'];
-        $this->loadView('admin/editar_profs', [
-            'prof' => $this->administradorDAO->getEditar($id_),
+        $this->loadView('admin/editar_disciplina', [
+            'prof' => $this->administradorDAO->getDisciplina_($id_),
             'disciplinas' => $this->administradorDAO->getDisciplina()
         ]);
     }
 
     public function editar_Disciplina()
     {
-        $nome   = $_POST['nome'];
-        $username   = $_POST['username'];
-        $email    = $_POST['email'];
-        $password = $_POST['password'];
-        $id = $_POST['id_professor'];
 
+        $id = $_POST['id_prof_'];
+        $id_disciplina = $_POST['disciplina'];
+        $id_turma    = $_GET['id_turma'];
 
-        $this->administradorDAO->edit(
-            $nome,
-            $username,
-            $email,
-            $password,
-            $id
+        $this->administradorDAO->edit_Disciplina(
+            $id,
+            $id_disciplina,
+            $id_turma
         );
     }
 
@@ -121,6 +116,23 @@ class AdministradorController extends RenderViews
             'prof' => $this->administradorDAO->getAtribuir($id_),
             'disciplinas' => $this->administradorDAO->getDisciplina()
         ]);
+    }
+
+    public function att_Profs()
+    {
+        $id_professor   = $_POST['id_professor'];
+        $id_turma    = $_POST['id_turma'];
+        $id_disciplina    = $_POST['id_disciplina'];
+        $id_curso   = $_POST['id_curso'];
+        $id_classe   = $_POST['id_classe'];
+
+        $this->loadView('admin/criar_profs', ['profs' => $this->administradorDAO->Atribuir(
+            $id_professor,
+            $id_turma,
+            $id_disciplina,
+            $id_curso,
+            $id_classe
+        )]);
     }
 
     public function remover()
@@ -137,9 +149,8 @@ class AdministradorController extends RenderViews
     public function apagar_()
     {
         $id = $_GET['id_professor'];
-        $id_ = $_GET['id_turma'];
 
-        $this->administradorDAO->delete($id, $id_);
+        $this->administradorDAO->delete($id);
     }
 
     // ------------------------------------- Prof ---------------------------------------

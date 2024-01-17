@@ -46,7 +46,7 @@ require_once('views\layout\layout_admin.php');
                         </td>
                         <td class="sorting_1">
                             <a role="button" class="btn btn-outline-primary"
-                                href="apagar_profs?id_professor=<?php echo $prof['id_professor'] ?>&id_turma=<?php echo $prof['id_turma'] ?>&id_curso=<?php echo $prof['id_curso'] ?>&id_classe=<?php echo $prof['id_classe']  ?>">
+                                href="apagar_profs?id_professor=<?php echo $prof['id_professor'] ?>">
                                 Apagar</a>
                         </td>
                     </tr>

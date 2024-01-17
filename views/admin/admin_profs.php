@@ -30,9 +30,8 @@ require_once('views\layout\layout_admin.php');
 
                         <td class="sorting_1">
                             <a role="button" class="btn btn-outline-primary"
-                                href="editar_d?id_professor=<?php echo $prof['id_professor'] ?>&id_turma=<?php echo $prof['id_turma'] ?>">
+                                href="editar_d?id_professor=<?php echo $prof['id_professor'] ?>&id_turma=<?php echo $prof['id_turma'] ?>&id_disciplina=<?php echo $prof['id_disciplina'] ?>">
                                 Editar</a>
-
                         </td>
                         <td class="sorting_1">
                             <a role="button" class="btn btn-outline-primary"

@@ -63,15 +63,15 @@ class AdministradorDAO extends Database
     {
 
         $stm = $this->pdo->prepare("INSERT INTO professor (nome, username, email, password) 
-        VALUES (:nome, :username, :email, :password)
-        ");
+        VALUES (:nome, :username, :email, :password) ");
         $stm->bindParam(':nome', $nome);
         $stm->bindParam(':username', $username);
         $stm->bindParam(':email', $email);
         $stm->bindParam(':password', $password);
         $stm->execute();
+        $id_professor = $this->pdo->lastInsertId();
         echo "<script>alert('Professor criado com Sucesso!');
-        location.href=' /app/listar_profs?';
+        location.href=' /app/atribuir_?id_professor=$id_professor';
         </script>";
     }
 
@@ -100,15 +100,63 @@ class AdministradorDAO extends Database
            </script>";
     }
 
-    public function getAtribuir($id_aluno)
+    public function getDisciplina_($id_professor)
+    {
+
+
+        $stm = $this->pdo->prepare("SELECT prof_turma.id_prof_, professor.id_professor, professor.nome as prof_nome,  
+        turma.id_turma, curso.id_curso, classe.id_classe, disciplina.id_disciplina
+        from prof_turma
+        join professor on prof_turma.id_professor = professor.id_professor
+        join turma on prof_turma.id_turma = turma.id_turma
+        join disciplina on prof_turma.id_disciplina = disciplina.id_disciplina
+        join curso on prof_turma.id_curso = curso.id_curso
+        join classe on prof_turma.id_classe = classe.id_classe
+        where prof_turma.id_professor = $id_professor");
+        $stm->execute();
+        return $stm->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function edit_Disciplina($id, $id_disciplina, $turma)
+    {
+
+        $turmas = $this->getTurma($turma);
+        $id_turma = $turmas['id_turma'];
+        $stm = $this->pdo->prepare("UPDATE prof_turma 
+        SET id_disciplina = :id_disciplina WHERE id_prof_ = :id_prof_ ");
+        $stm->bindParam(':id_prof_', $$id);
+        $stm->bindParam(':id_disciplina', $id_disciplina);
+        $stm->execute();
+        echo var_dump($stm);
+        //header("Location: /app/admin_profs?id_turma=$turma");
+    }
+
+    public function getAtribuir($id_professor)
     {
 
         $stm = $this->pdo->prepare("SELECT professor.id_professor, professor.nome as prof_nome
-from prof_turma
-join professor on prof_turma.id_professor = professor.id_professor
-where professor.id_professor = $id_aluno");
+from professor 
+where professor.id_professor = $id_professor");
         $stm->execute();
         return $stm->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function Atribuir($id_professor, $turma, $id_disciplina, $id_curso, $id_classe)
+    {
+
+        $turmas = $this->getTurma($turma);
+        $id_turma = $turmas['id_turma'];
+        $stm = $this->pdo->prepare("INSERT INTO prof_turma (id_professor, id_turma, id_disciplina, id_curso, id_classe) VALUES (:id_professor, :id_turma, :id_disciplina, :id_curso, :id_classe) ");
+        $stm->bindParam(':id_professor', $id_professor);
+        $stm->bindParam(':id_turma', $id_turma);
+        $stm->bindParam(':id_disciplina', $id_disciplina);
+        $stm->bindParam(':id_curso', $id_curso);
+        $stm->bindParam(':id_classe', $id_classe);
+        $stm->execute();
+        echo var_dump($stm, $id_turma);
+        echo "<script>alert('Professor criado com Sucesso!');
+        location.href=' /app/listar_profs?';
+        </script>";
     }
 
     public function getDisciplina()
@@ -129,15 +177,13 @@ where professor.id_professor = $id_aluno");
         header("Location: /app/admin_profs?id_curso=$id_curso&id_classe=$id_classe&id_turma=$turma");
     }
 
-    public function delete($id_professor, $turma)
+    public function delete($id_professor)
     {
         $stm = $this->pdo->prepare("DELETE FROM prof_turma WHERE prof_turma.id_professor = $id_professor");
         $stm->execute();
         $stm1 = $this->pdo->prepare("DELETE FROM professor WHERE id_professor = $id_professor ");
         $stm1->execute();
-        echo "<script>alert('Professor Apagado com Sucesso!');
-           location.href=' /app/listar_profs'
-           </script>";
+        header("Location: /app/listar_profs");
     }
 
     // ----------------------------------------------------------------------------------------------------------------
