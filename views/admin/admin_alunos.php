@@ -12,7 +12,7 @@ require_once('views\layout\layout_admin.php');
             foreach ($alunos as $aluno) :
             ?>
             <a role="button" class="btn btn-primary"
-                href="criar_?id_classe=<?php echo $aluno['classe_id'] ?>&id_turma=<?php echo $aluno['turma_id'] ?>&id_curso=<?php echo $aluno['curso_id'] ?>">
+                href="criar_?id_classe=<?php echo $aluno['classe_id'] ?>&id_turma=<?php echo $turma['nome'] ?>&id_curso=<?php echo $aluno['curso_id'] ?>">
                 Criar novo aluno</a>
             <?php
                 break;
@@ -40,15 +40,13 @@ require_once('views\layout\layout_admin.php');
                     <tr role="row" class="odd">
                         <td class="sorting_1"><?php echo $aluno['id_aluno'] ?></td>
                         <td class="sorting_1"><?php echo $aluno['aluno_nome'] ?></td>
-                        <!--     <td class="sorting_1"><?php // echo $aluno['username'] 
-                                                            ?></td> -->
                         <td class="sorting_1"><?php echo $aluno['numeracao'] ?></td>
                         <td class="sorting_1"><?php echo $aluno['curso_nome'] ?></td>
                         <td class="sorting_1"><?php echo $aluno['turma_nome'] ?></td>
                         <td class="sorting_1"><?php echo $aluno['tipo_aluno'] ?></td>
                         <td class="sorting_1">
                             <a role="button" class="btn btn-outline-primary"
-                                href="editar_?id_aluno=<?php echo $aluno['id_aluno'] ?>&id_turma=<?php echo $aluno['turma_id'] ?>&id_curso=<?php echo $aluno['curso_id'] ?>&id_classe=<?php echo $aluno['classe_id'] ?>">
+                                href="editar_?id_aluno=<?php echo $aluno['id_aluno'] ?>&id_turma=<?php echo $turma['nome'] ?>&id_curso=<?php echo $aluno['curso_id'] ?>&id_classe=<?php echo $aluno['classe_id'] ?>">
                                 Editar</a>
                         </td>
                         <td class="sorting_1">

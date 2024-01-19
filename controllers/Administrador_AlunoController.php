@@ -9,55 +9,24 @@ class Administrador_AlunoController extends RenderViews
         $this->administrador_AlunoDAO = new Administrador_AlunoDAO();
     }
 
-
     public function admin()
     {
         $this->loadView('admin/admin_home', []);
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------------------
 
     public function turmas_Alunos()
     {
-        //    $id = $_GET['id_curso'];
-        //    $id_ = $_GET['id_classe'];
-        //    $id__ = $_GET['id_turma'];
-
-        $this->loadView('admin/turmas_alunos', []);
+        $this->loadView('admin/cursos_alunos', []);
     }
-
-
-    public function cursos_Alunos()
-    {
-        //    $id = $_GET['id_curso'];
-        $this->loadView('admin/cursos_alunos', ['cursos' => $this->administrador_AlunoDAO->getCursos()]);
-    }
-
-    public function classes_Alunos()
-    {
-        $id = $_GET['id_curso'];
-        //    $id_ = $_GET['id_classe'];
-
-        $this->loadView('admin/classes_alunos', ['classes' => $this->administrador_AlunoDAO->getClasses($id)]);
-    }
-
-    /*    public function turmas_Alunos()
-    {
-        $id = $_GET['id_curso'];
-        $id_ = $_GET['id_classe'];
-        //    $id__ = $_GET['id_turma'];
-
-        $this->loadView('admin/turmas_alunos', ['turmas' => $this->administrador_AlunoDAO->getTurmas($id, $id_)]);
-    }
-    */
 
     public function alunos()
     {
         $id = $_GET['id_turma'];
-        //    $id_ = $_GET['id_aluno'];
-
         $this->loadView('admin/admin_alunos', [
-            'alunos' => $this->administrador_AlunoDAO->getAlunos($id)
+            'alunos' => $this->administrador_AlunoDAO->getAlunos($id),
+            'turma' => $this->administrador_AlunoDAO->getTurma($id)
         ]);
     }
 

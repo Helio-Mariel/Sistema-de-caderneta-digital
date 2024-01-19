@@ -58,7 +58,7 @@
                             Listar Professores
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <a class="nav-link collapsed" href="cursos">
+                        <a class="nav-link collapsed" href="turmas_alunos">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Listar Alunos
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
