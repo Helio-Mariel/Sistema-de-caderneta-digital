@@ -4,12 +4,10 @@ session_start();
 class Administrador_AlunoDAO extends Database
 {
     private $pdo;
-    //private $userId;
 
     public function __construct()
     {
         $this->pdo = $this->getConnection();
-        //    $this->userId = $_SESSION['user_id'];
     }
 
     public function getAdmin()

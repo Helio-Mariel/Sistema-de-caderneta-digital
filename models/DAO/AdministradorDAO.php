@@ -125,7 +125,6 @@ class AdministradorDAO extends Database
         $stm->bindParam(':id_prof_', $id);
         $stm->bindParam(':id_disciplina', $id_disciplina);
         $stm->execute();
-        echo var_dump($turma);
         header("Location: /app/admin_profs?id_turma=$turma");
     }
 

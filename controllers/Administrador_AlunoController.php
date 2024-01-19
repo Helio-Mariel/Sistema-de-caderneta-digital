@@ -15,7 +15,17 @@ class Administrador_AlunoController extends RenderViews
         $this->loadView('admin/admin_home', []);
     }
 
-    // ----------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------------------------------
+
+    public function turmas_Alunos()
+    {
+        //    $id = $_GET['id_curso'];
+        //    $id_ = $_GET['id_classe'];
+        //    $id__ = $_GET['id_turma'];
+
+        $this->loadView('admin/turmas_alunos', []);
+    }
+
 
     public function cursos_Alunos()
     {
@@ -31,7 +41,7 @@ class Administrador_AlunoController extends RenderViews
         $this->loadView('admin/classes_alunos', ['classes' => $this->administrador_AlunoDAO->getClasses($id)]);
     }
 
-    public function turmas_Alunos()
+    /*    public function turmas_Alunos()
     {
         $id = $_GET['id_curso'];
         $id_ = $_GET['id_classe'];
@@ -39,6 +49,7 @@ class Administrador_AlunoController extends RenderViews
 
         $this->loadView('admin/turmas_alunos', ['turmas' => $this->administrador_AlunoDAO->getTurmas($id, $id_)]);
     }
+    */
 
     public function alunos()
     {

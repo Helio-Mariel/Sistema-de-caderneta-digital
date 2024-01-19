@@ -14,7 +14,7 @@ class AdministradorController extends RenderViews
         $this->loadView('admin/admin_home', []);
     }
 
-    // ---------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------------------------
 
     public function turmas_Profs()
     {
@@ -153,7 +153,7 @@ class AdministradorController extends RenderViews
         $this->administradorDAO->delete($id);
     }
 
-    // ------------------------------------- Prof ---------------------------------------
+    // ------------------------------------- Prof --------------------------------------------------------------------
 
     public function logout()
     {
