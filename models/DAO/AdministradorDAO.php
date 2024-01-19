@@ -120,15 +120,23 @@ class AdministradorDAO extends Database
     public function edit_Disciplina($id, $id_disciplina, $turma)
     {
 
-        $turmas = $this->getTurma($turma);
-        $id_turma = $turmas['id_turma'];
         $stm = $this->pdo->prepare("UPDATE prof_turma 
         SET id_disciplina = :id_disciplina WHERE id_prof_ = :id_prof_ ");
-        $stm->bindParam(':id_prof_', $$id);
+        $stm->bindParam(':id_prof_', $id);
         $stm->bindParam(':id_disciplina', $id_disciplina);
         $stm->execute();
-        echo var_dump($stm);
-        //header("Location: /app/admin_profs?id_turma=$turma");
+        echo var_dump($turma);
+        header("Location: /app/admin_profs?id_turma=$turma");
+    }
+
+    public function remove($id_professor, $turma, $disciplina, $id_curso, $id_classe)
+    {
+
+        $turmas = $this->getTurma($turma);
+        $id_turma = $turmas['id_turma'];
+        $stm = $this->pdo->prepare("DELETE FROM prof_turma WHERE prof_turma.id_professor = $id_professor and prof_turma.id_turma = $id_turma and prof_turma.id_disciplina = $disciplina");
+        $stm->execute();
+        header("Location: /app/admin_profs?id_curso=$id_curso&id_classe=$id_classe&id_turma=$turma");
     }
 
     public function getAtribuir($id_professor)
@@ -165,16 +173,6 @@ where professor.id_professor = $id_professor");
         $stm = $this->pdo->prepare("SELECT * from disciplina");
         $stm->execute();
         return $stm->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    public function remove($id_professor, $turma, $disciplina, $id_curso, $id_classe)
-    {
-
-        $turmas = $this->getTurma($turma);
-        $id_turma = $turmas['id_turma'];
-        $stm = $this->pdo->prepare("DELETE FROM prof_turma WHERE prof_turma.id_professor = $id_professor and prof_turma.id_turma = $id_turma and prof_turma.id_disciplina = $disciplina");
-        $stm->execute();
-        header("Location: /app/admin_profs?id_curso=$id_curso&id_classe=$id_classe&id_turma=$turma");
     }
 
     public function delete($id_professor)

@@ -100,7 +100,7 @@ class AdministradorController extends RenderViews
 
         $id = $_POST['id_prof_'];
         $id_disciplina = $_POST['disciplina'];
-        $id_turma    = $_GET['id_turma'];
+        $id_turma    = $_POST['id_turma'];
 
         $this->administradorDAO->edit_Disciplina(
             $id,

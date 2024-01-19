@@ -40,7 +40,7 @@ require_once('views\layout\layout_admin.php');
                                         <?php endforeach ?>
                                     </select>
                                 </div>
-                                <input type="hidden" name="id_turma" value="<?php echo $prof['id_turma']  ?>" />
+                                <input type="hidden" name="id_turma" value="<?php echo $_GET['id_turma']  ?>" />
                                 <input type="hidden" name="id_prof_" value="<?php echo $prof['id_prof_']  ?>" />
 
                                 <div class="mt-4 mb-0">
