@@ -10,7 +10,6 @@ class ProfessorController extends RenderViews
         $this->professorDAO = new ProfessorDAO();
     }
 
-
     public function login()
     {
         $username = $_POST['username'];
@@ -28,13 +27,18 @@ class ProfessorController extends RenderViews
             'turmas' => $this->professorDAO->listar_Turmas(),
             'cursos' => $this->professorDAO->listar_Cursos()
 
-
         ]);
     }
 
     public function disciplinas()
     {
         $this->loadView('prof/prof_disciplinas', ['disciplinas' => $this->professorDAO->disciplinasById()]);
+    }
+
+    public function alunos()
+    {
+        $id_turma    = $_POST['id_turma'];
+        $this->loadView('prof/prof_alunos', ['alunos' => $this->professorDAO->getAlunos($id_turma)]);
     }
 
     public function logout()

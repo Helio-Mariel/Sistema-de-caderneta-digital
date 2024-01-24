@@ -12,6 +12,8 @@ $routes = [
     '/login_aluno' => 'AlunoController@login',
     '/aluno_home' => 'AlunoController@aluno',
     '/aluno_disciplinas' => 'AlunoController@disciplinas',
+    '/aluno_notas' => 'AlunoController@notas',
+
     '/logout' => 'AlunoController@logout',
     // ---------------------- Aluno ---------------------------------------
 
@@ -19,6 +21,10 @@ $routes = [
     '/login_prof' => 'ProfessorController@login',
     '/prof_home' => 'ProfessorController@professor',
     '/prof_disciplinas' => 'ProfessorController@disciplinas',
+    '/prof_alunos' => 'ProfessorController@alunos',
+
+    '/adicionar_notas' => 'ProfessorController@add_notas',
+    '/alterar_notas' => 'ProfessorController@edit_notas',
     '/logout_prof' => 'ProfessorController@logout',
     // ---------------------- Professor -----------------------------------
 

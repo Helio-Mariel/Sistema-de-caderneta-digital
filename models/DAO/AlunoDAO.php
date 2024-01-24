@@ -28,23 +28,6 @@ class AlunoDAO extends Database
         }
     }
 
-    /*    public function login($username, $password)
-    {
-        $stm = $this->pdo->prepare("SELECT * FROM aluno WHERE username = :username");
-        $stm->bindParam(":username", $username);
-        $stm->execute();
-
-        $aluno = $stm->fetch(PDO::FETCH_ASSOC);
-
-        if ($aluno && $password == $aluno['password']) {
-            $_SESSION['id_aluno'] = $aluno['id_aluno'];
-            header("Location: /app/aluno_home");
-        } else {
-            header("Location: /app/login");
-            return false;
-        }
-    }   */
-
     public function getUser()
     {
         $id = $_SESSION['id_aluno'];
@@ -55,9 +38,7 @@ class AlunoDAO extends Database
 
     public function fetchById() // perfil 
     {
-        $id = $_SESSION['id_aluno'];
         $user = $this->getUser();
-
         $stm = $this->pdo->prepare("SELECT 
         aluno.id_aluno, aluno.n_matricula, aluno.nome as aluno_nome, aluno.tipo_aluno, curso.nome as curso_nome, 
         turma.nome as turma_nome, classe.numeracao as classe_numeracao from aluno 
@@ -75,16 +56,27 @@ class AlunoDAO extends Database
 
     public function disciplinasById()
     {
-        //    $id = $_SESSION['id_aluno'];
         $user = $this->getUser();
         $id_turma = $user['id_turma'];
-
         $stm = $this->pdo->prepare("SELECT professor.nome as prof_nome, disciplina.nome as disciplina_nome, prof_turma.dia 
         from prof_turma
         join professor on prof_turma.id_professor =  professor.id_professor
         join disciplina on prof_turma.id_disciplina = disciplina.id_disciplina
-        where prof_turma.id_turma = $id_turma  ");
+        where prof_turma.id_turma = $id_turma");
+        $stm->execute();
+        return $stm->fetchAll(PDO::FETCH_ASSOC);
+    }
 
+    public function notasById()
+    {
+        $id = $_SESSION['id_aluno'];
+        $user = $this->getUser();
+        $id_aluno = $user['id_aluno'];
+        $id_disciplina = $user['id_disciplina'];
+        $stm = $this->pdo->prepare("SELECT * from notas
+                join aluno on notas.id_aluno = aluno.id_alunos
+        join disciplina on notas.id_disciplina = disciplina.id_disciplina
+    <!--    where notas.id_aluno = $id_aluno and notas.id_disciplina = $id_disciplina");
         $stm->execute();
         return $stm->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -93,15 +85,5 @@ class AlunoDAO extends Database
     {
         session_destroy();
         header("Location: /app/");
-    }
-
-    public function fetch()
-    {
-        $stm = $this->pdo->query("SELECT * FROM aluno");
-        if ($stm->rowCount() > 0) {
-            return $stm->fetchAll(PDO::FETCH_ASSOC);
-        } else {
-            return [];
-        }
     }
 }

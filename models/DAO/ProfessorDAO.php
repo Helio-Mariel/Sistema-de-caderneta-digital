@@ -12,7 +12,6 @@ class ProfessorDAO extends Database
         //    $this->userId = $_SESSION['user_id'];
     }
 
-
     public function fetch()
     {
         $stm = $this->pdo->query("SELECT * FROM professor");
@@ -39,7 +38,6 @@ class ProfessorDAO extends Database
             return false;
         }
     }
-
 
     public function getProf()
     {
@@ -122,7 +120,18 @@ class ProfessorDAO extends Database
         join turma on prof_turma.id_turma = turma.id_turma 
         join professor on prof_turma.id_professor = professor.id_professor 
         where professor.id_professor = $id ");
+        $stm->execute();
+        return $stm->fetchAll(PDO::FETCH_ASSOC);
+    }
 
+    public function getAlunos($id_turma)
+    {
+
+        $stm = $this->pdo->prepare("SELECT aluno.id_aluno, aluno.nome as aluno_nome, aluno.n_matricula,
+        turma.turma_id as turma_id
+        from aluno
+        join turma on aluno.id_turma = turma.id_turma
+        where turma.id_turma = $id_turma ");
         $stm->execute();
         return $stm->fetchAll(PDO::FETCH_ASSOC);
     }

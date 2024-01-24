@@ -57,7 +57,7 @@
                             Listar Disciplinas
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <a class="nav-link collapsed" href="#">
+                        <a class="nav-link collapsed" href="aluno_notas">
                             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                             Listar Notas
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>

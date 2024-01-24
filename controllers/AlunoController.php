@@ -8,7 +8,6 @@ class AlunoController extends RenderViews
         $this->alunoDAO = new AlunoDAO();
     }
 
-
     public function login()
     {
         $n_matricula = $_POST['n_matricula'];
@@ -25,6 +24,11 @@ class AlunoController extends RenderViews
     public function disciplinas()
     {
         $this->loadView('aluno/aluno_disciplinas', ['disciplinas' => $this->alunoDAO->disciplinasById()]);
+    }
+
+    public function notas()
+    {
+        $this->loadView('aluno/aluno_notas', ['notas' => $this->alunoDAO->disciplinasById()]);
     }
 
     public function logout()
