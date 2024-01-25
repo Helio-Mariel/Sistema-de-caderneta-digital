@@ -64,25 +64,6 @@ class ProfessorDAO extends Database
         return $stm->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function disciplinasById()
-    {
-        $id = $_SESSION['id_professor'];
-
-        $stm = $this->pdo->prepare("SELECT 
-        prof_turma.id_professor , disciplina.nome as disciplina_nome , turma.nome as turma_nome, 
-        curso.nome as curso_nome, classe.numeracao as classe_nome, prof_turma.dia
-        from prof_turma 
-        join disciplina on prof_turma.id_disciplina = disciplina.id_disciplina
-        join professor on prof_turma.id_professor = professor.id_professor 
-        join turma on prof_turma.id_turma = turma.id_turma 
-        join curso on prof_turma.id_curso = curso.id_curso 
-        join classe on prof_turma.id_classe = classe.id_classe 
-        where professor.id_professor = $id ");
-
-        $stm->execute();
-        return $stm->fetchAll(PDO::FETCH_ASSOC);
-    }
-
     public function listar_Classes()
     {
         $id = $_SESSION['id_professor'];
@@ -124,14 +105,30 @@ class ProfessorDAO extends Database
         return $stm->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function disciplinasById()
+    {
+        $id = $_SESSION['id_professor'];
+
+        $stm = $this->pdo->prepare("SELECT 
+        prof_turma.id_professor , disciplina.nome as disciplina_nome , turma.nome as turma_nome, 
+        curso.nome as curso_nome, classe.numeracao as classe_nome, prof_turma.dia, 
+        prof_turma.id_turma, disciplina.id_disciplina
+        from prof_turma 
+        join disciplina on prof_turma.id_disciplina = disciplina.id_disciplina
+        join professor on prof_turma.id_professor = professor.id_professor 
+        join turma on prof_turma.id_turma = turma.id_turma 
+        join curso on prof_turma.id_curso = curso.id_curso 
+        join classe on prof_turma.id_classe = classe.id_classe 
+        where professor.id_professor = $id ");
+
+        $stm->execute();
+        return $stm->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function getAlunos($id_turma)
     {
-
-        $stm = $this->pdo->prepare("SELECT aluno.id_aluno, aluno.nome as aluno_nome, aluno.n_matricula,
-        turma.turma_id as turma_id
-        from aluno
-        join turma on aluno.id_turma = turma.id_turma
-        where turma.id_turma = $id_turma ");
+        $stm = $this->pdo->prepare("SELECT aluno.id_aluno, aluno.nome, aluno.n_matricula, aluno.id_turma from aluno
+        where aluno.id_turma = $id_turma");
         $stm->execute();
         return $stm->fetchAll(PDO::FETCH_ASSOC);
     }

@@ -14,7 +14,6 @@ class ProfessorController extends RenderViews
     {
         $username = $_POST['username'];
         $password = $_POST['password'];
-
         $this->professorDAO->login_prof($username, $password);
     }
 
@@ -37,7 +36,7 @@ class ProfessorController extends RenderViews
 
     public function alunos()
     {
-        $id_turma    = $_POST['id_turma'];
+        $id_turma  = $_GET['id_turma'];
         $this->loadView('prof/prof_alunos', ['alunos' => $this->professorDAO->getAlunos($id_turma)]);
     }
 

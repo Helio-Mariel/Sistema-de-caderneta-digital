@@ -1,11 +1,11 @@
 <?php
-require_once('views\layout\layout_admin.php');
+require_once('views\layout\layout_prof.php');
 ?>
 
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4 mt-4">
-            <h1 class="mt-4 mr-4">Listagem dos Estudantes</h1>
+            <h2 class="mt-4 mr-4">Listagem dos Estudantes </h2>
             <ol class="breadcrumb mb-6">
             </ol>
             <table id="" class="table table-striped table-bordered dataTable no-footer" cellspacing="0"
@@ -25,7 +25,7 @@ require_once('views\layout\layout_admin.php');
                     ?>
                     <tr role="row" class="odd">
                         <td class="sorting_1"><?php echo $aluno['n_matricula'] ?></td>
-                        <td class="sorting_1"><?php echo $aluno['aluno_nome'] ?></td>
+                        <td class="sorting_1"><?php echo $aluno['nome'] ?></td>
 
                         <td class="sorting_1">
                             <a role="button" class="btn btn-outline-primary"

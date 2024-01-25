@@ -22,7 +22,6 @@ $routes = [
     '/prof_home' => 'ProfessorController@professor',
     '/prof_disciplinas' => 'ProfessorController@disciplinas',
     '/prof_alunos' => 'ProfessorController@alunos',
-
     '/adicionar_notas' => 'ProfessorController@add_notas',
     '/alterar_notas' => 'ProfessorController@edit_notas',
     '/logout_prof' => 'ProfessorController@logout',

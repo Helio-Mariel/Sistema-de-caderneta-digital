@@ -33,16 +33,15 @@ require_once('views\layout\layout_prof.php');
                     foreach ($disciplinas as $disciplina) :
                     ?>
                     <tr role="row" class="odd">
-                        <td class="sorting_1"> <?php echo $disciplina['disciplina_nome']
-                                                    ?></td>
-                        <td> <?php echo $disciplina['curso_nome']
-                                    ?> </td>
-                        <td class="sorting_1"> <?php echo $disciplina['classe_nome']
-                                                    ?></td>
-                        <td class="sorting_1"> <?php echo $disciplina['turma_nome']
-                                                    ?></td>
-                        <td class="sorting_1"> <?php echo $disciplina['dia']
-                                                    ?></td>
+                        <td class="sorting_1"> <?php echo $disciplina['disciplina_nome'] ?></td>
+                        <td> <?php echo $disciplina['curso_nome'] ?></td>
+                        <td class="sorting_1"> <?php echo $disciplina['classe_nome'] ?></td>
+                        <td class="sorting_1">
+                            <a style="color:black"
+                                href="prof_alunos?id_turma=<?php echo $disciplina['id_turma'] ?>&id_disciplina=<?php echo $disciplina['id_disciplina'] ?>"><?php echo $disciplina['turma_nome'] ?></a>
+
+                        </td>
+                        <td class="sorting_1"> <?php echo $disciplina['dia'] ?></td>
                     </tr>
 
                     <?php
