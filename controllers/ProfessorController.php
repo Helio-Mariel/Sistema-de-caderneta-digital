@@ -25,7 +25,6 @@ class ProfessorController extends RenderViews
             'classes' => $this->professorDAO->listar_Classes(),
             'turmas' => $this->professorDAO->listar_Turmas(),
             'cursos' => $this->professorDAO->listar_Cursos()
-
         ]);
     }
 
@@ -39,6 +38,16 @@ class ProfessorController extends RenderViews
         $id_turma  = $_GET['id_turma'];
         $this->loadView('prof/prof_alunos', ['alunos' => $this->professorDAO->getAlunos($id_turma)]);
     }
+
+    public function add()
+    {
+        $this->loadView('prof/prof_notas', []);
+    }
+
+    public function add_notas()
+    {
+    }
+
 
     public function logout()
     {
