@@ -29,12 +29,12 @@ require_once('views\layout\layout_prof.php');
 
                         <td class="sorting_1">
                             <a role="button" class="btn btn-outline-primary"
-                                href="adicionar_notas?id_aluno=<?php echo $aluno['id_aluno'] ?>">
+                                href="adicionar_?id_aluno=<?php echo $aluno['id_aluno'] ?>&id_disciplina=<?php echo $_GET['id_disciplina'] ?>&id_turma=<?php echo $_GET['id_turma'] ?>">
                                 Adicionar</a>
                         </td>
                         <td class="sorting_1">
                             <a role="button" class="btn btn-outline-primary"
-                                href="alterar_notas?id_aluno=<?php echo $aluno['id_aluno'] ?>">
+                                href="alterar_notas?id_aluno=<?php echo $aluno['id_aluno'] ?>&id_disciplina=<?php echo $_GET['id_disciplina'] ?>">
                                 Editar</a>
                         </td>
                     </tr>

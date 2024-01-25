@@ -133,6 +133,41 @@ class ProfessorDAO extends Database
         return $stm->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function add_notas($AC1, $AC2, $AC3, $AC4, $AC5, $AC6, $ac_media, $MAC, $PP1, $PP2, $PP3, $PT1, $PT2, $PT3, $MT1, $MT2, $MT3, $m_final, $situacao, $id_aluno, $id_disciplina, $id_turma)
+    {
+        $stm = $this->pdo->prepare("INSERT INTO notas 
+        (AC1, AC2, AC3, AC4, AC5, AC6, ac_media, MAC, PP1, PP2, PP3, PT1, PT2, PT3, MT1, MT2, MT3, m_final, situacao, id_aluno, id_disciplina) 
+        VALUES 
+        (:AC1, :AC2 ,:AC3, :AC4, :AC5, :AC6, :ac_media, :MAC, :PP1, :PP2, :PP3, :PT1, :PT2, :PT3, :MT1, :MT2, :MT3, :m_final, :situacao, :id_aluno, :id_disciplina)
+ ");
+        $stm->bindParam(':AC1', $AC1);
+        $stm->bindParam(':AC2', $AC2);
+        $stm->bindParam(':AC3', $AC3);
+        $stm->bindParam(':AC4', $AC4);
+        $stm->bindParam(':AC5', $AC5);
+        $stm->bindParam(':AC6', $AC6);
+        $stm->bindParam(':ac_media', $ac_media);
+        $stm->bindParam(':MAC', $MAC);
+        $stm->bindParam(':PP1', $PP1);
+        $stm->bindParam(':PP2', $PP2);
+        $stm->bindParam(':PP3', $PP3);
+        $stm->bindParam(':PT1', $PT1);
+        $stm->bindParam(':PT2', $PT2);
+        $stm->bindParam(':PT3', $PT3);
+        $stm->bindParam(':MT1', $MT1);
+        $stm->bindParam(':MT2', $MT2);
+        $stm->bindParam(':MT3', $MT3);
+        $stm->bindParam(':m_final', $m_final);
+        $stm->bindParam(':situacao', $situacao);
+        $stm->bindParam(':id_aluno', $id_aluno);
+        $stm->bindParam(':id_disciplina', $id_disciplina);
+        $stm->execute();
+        header("Location: /app/prof_alunos?id_turma=$id_turma&id_disciplina=$id_disciplina");
+        /*    echo "<script>alert('Notas do Estudante adicionadas, Consultar no 'Editar'');
+        location.href=' /app/prof/prof_alunos?id_turma=$id_turma&id_disciplina=$id_disciplina';
+        </script>"; */
+    }
+
     public function logout()
     {
         session_destroy();

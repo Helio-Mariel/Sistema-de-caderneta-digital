@@ -76,7 +76,7 @@ require_once('views\layout\layout_prof.php');
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-floating mb-3 mb-md-0">
-                                            <input class="form-control" id="PP2" type="text" name="password" />
+                                            <input class="form-control" id="PP2" type="text" name="PP2" />
                                             <label for="PP2">PP2</label>
                                         </div>
                                     </div>
@@ -109,8 +109,8 @@ require_once('views\layout\layout_prof.php');
                                     <h6>Médias (Média do Trimestre)</h6>
                                     <div class="col-md-2">
                                         <div class="form-floating mb-3 mb-md-0">
-                                            <input class="form-control" id="MACs" type="text" name="MACs" />
-                                            <label for="MACs">MACs</label>
+                                            <input class="form-control" id="MAC" type="text" name="MAC" />
+                                            <label for="MAC">MACs</label>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -127,7 +127,7 @@ require_once('views\layout\layout_prof.php');
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-floating mb-3 mb-md-0">
-                                            <input class="form-control" id="MT2" type="text" name="password" />
+                                            <input class="form-control" id="MT2" type="text" name="MT2" />
                                             <label for="MT2">MT2</label>
                                         </div>
                                     </div>
@@ -151,13 +151,10 @@ require_once('views\layout\layout_prof.php');
                                     </div>
                                 </div>
 
-
-                                <!--            <input type="hidden" name="id_curso" value="<?php // echo $_GET['id_curso'] 
-                                                                                            ?>" />
-                                <input type="hidden" name="id_classe" value="<?php // echo $_GET['id_classe'] 
-                                                                                ?>" />
-                                <input type="hidden" name="id_turma" value="<?php // echo $_GET['id_turma'] 
-                                                                            ?>" />      -->
+                                <input type="hidden" name="id_aluno" value="<?php echo $_GET['id_aluno'] ?>" />
+                                <input type="hidden" name="id_disciplina"
+                                    value="<?php echo $_GET['id_disciplina'] ?>" />
+                                <input type="hidden" name="id_turma" value="<?php echo $_GET['id_turma'] ?>" />
                                 <div class="mt-4 mb-0">
                                     <div class="d-grid">
                                         <button class="btn btn-primary" type="submit">Adicionar</button>

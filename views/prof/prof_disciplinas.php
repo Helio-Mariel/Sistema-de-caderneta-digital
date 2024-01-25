@@ -27,9 +27,7 @@ require_once('views\layout\layout_prof.php');
                     </tr>
                 </thead>
                 <tbody>
-
                     <?php
-
                     foreach ($disciplinas as $disciplina) :
                     ?>
                     <tr role="row" class="odd">
@@ -39,11 +37,9 @@ require_once('views\layout\layout_prof.php');
                         <td class="sorting_1">
                             <a style="color:black"
                                 href="prof_alunos?id_turma=<?php echo $disciplina['id_turma'] ?>&id_disciplina=<?php echo $disciplina['id_disciplina'] ?>"><?php echo $disciplina['turma_nome'] ?></a>
-
                         </td>
                         <td class="sorting_1"> <?php echo $disciplina['dia'] ?></td>
                     </tr>
-
                     <?php
                     endforeach;
                     ?>
