@@ -69,14 +69,25 @@ class AlunoDAO extends Database
 
     public function notasById()
     {
-        $id = $_SESSION['id_aluno'];
+        //    $id = $_SESSION['id_aluno'];
         $user = $this->getUser();
         $id_aluno = $user['id_aluno'];
-        $id_disciplina = $user['id_disciplina'];
-        $stm = $this->pdo->prepare("SELECT * from notas
-                join aluno on notas.id_aluno = aluno.id_alunos
-        join disciplina on notas.id_disciplina = disciplina.id_disciplina
-    <!--    where notas.id_aluno = $id_aluno and notas.id_disciplina = $id_disciplina");
+        $stm = $this->pdo->prepare("SELECT AC1, AC2, AC3, AC4, AC5, AC6, AC_media, MAC, disciplina.nome from notas
+join aluno on notas.id_aluno = aluno.id_aluno
+join disciplina on notas.id_disciplina = disciplina.id_disciplina
+where notas.id_aluno = $id_aluno order by disciplina.nome");
+        $stm->execute();
+        return $stm->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function notasById_()
+    {
+        $user = $this->getUser();
+        $id_aluno = $user['id_aluno'];
+        $stm = $this->pdo->prepare("SELECT PP1, PP2, PP3, PT1, PT2, PT3, MT1, MT2, MT3, m_final, situacao, disciplina.nome from notas
+join aluno on notas.id_aluno = aluno.id_aluno
+join disciplina on notas.id_disciplina = disciplina.id_disciplina
+where notas.id_aluno = $id_aluno order by disciplina.nome");
         $stm->execute();
         return $stm->fetchAll(PDO::FETCH_ASSOC);
     }

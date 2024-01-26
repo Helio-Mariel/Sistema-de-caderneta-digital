@@ -28,7 +28,14 @@ class AlunoController extends RenderViews
 
     public function notas()
     {
-        $this->loadView('aluno/aluno_notas', ['notas' => $this->alunoDAO->disciplinasById()]);
+        $this->loadView(
+            'aluno/aluno_notas',
+            [
+                'notas' => $this->alunoDAO->notasById(),
+                'notas_' => $this->alunoDAO->notasById_()
+            ],
+
+        );
     }
 
     public function logout()
